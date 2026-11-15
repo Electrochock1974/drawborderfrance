@@ -6,16 +6,23 @@ Le script lit au démarrage :
 
 Dépôt : https://github.com/Electrochock1974/drawborderfrance
 
+## Règles du verrou
+
+- Empreinte ≠ publiée → **script bloqué** (copie modifiée), même pour le mainteneur  
+  → monter `@version`, tester, puis enregistrer la nouvelle empreinte
+- Version absente de `version-min.json` → bloqué, **sauf** mainteneur (test avant pub)
+- Version `< min` → bloqué (retirée)
+- GitHub injoignable → démarrage (fail-open)
+
 ## Avant chaque release GreasyFork
 
 1. Monter `// @version` dans `dbf.js`
-2. Installer / recharger le script dans Tampermonkey, ouvrir WME
-3. En console, copier le hash de la ligne  
-   `[WME Draw Borders France v…] empreinte <hash>`  
-   (**c’est la référence** — `node tools/empreinte.js` peut différer de Tampermonkey)
-4. Ajouter l’entrée dans `version-min.json` (`empreintes["x.y.z"] = "<hash>"`)
-5. Pousser `version-min.json` sur GitHub **avant** ou avec GreasyFork
-6. Publier `dbf.js` sur [GreasyFork #8138](https://greasyfork.org/scripts/8138)
+2. Installer / recharger dans Tampermonkey, ouvrir WME (mainteneur : démarre en « non publiée »)
+3. Console : copier le hash  
+   `empreintes["x.y.z"] = "<hash>"`  
+   (**référence navigateur** — pas `node tools/empreinte.js`)
+4. Ajouter l’entrée dans `version-min.json` et pousser sur GitHub
+5. Publier `dbf.js` sur [GreasyFork #8138](https://greasyfork.org/scripts/8138)
 
 ## Retirer une version
 
