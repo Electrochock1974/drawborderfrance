@@ -3,7 +3,7 @@
  * Génère la version GreasyFork / dépôt :
  * - en-tête userscript intact (@grant, @connect…)
  * - sans commentaires ligne/bloc (chaînes, templates et regex préservés)
- * - sans lignes marquées @vm-dev (ex. console empreinte — réservées à dbf.js local)
+ * - sans lignes @vm-dev ni blocs // >>> @vm-dev … // <<< @vm-dev (outils locaux)
  *
  * Usage :
  *   node tools/publier.js
@@ -197,6 +197,13 @@ function tidyBody(body) {
         .replace(/\n*$/, '\n');
 }
 
+function dropVmDevRegions(body) {
+    return body.replace(
+        /^[ \t]*\/\/\s*>>>\s*@vm-dev[^\n]*\r?\n[\s\S]*?^[ \t]*\/\/\s*<<<\s*@vm-dev[^\n]*\r?\n?/gm,
+        ''
+    );
+}
+
 function dropVmDevLines(body) {
     return body.split(/\r?\n/).filter(function (line) {
         return !/@vm-dev\b/.test(line);
@@ -207,13 +214,14 @@ const src = fs.readFileSync(SRC, 'utf8');
 const header = extractHeader(src);
 const endMark = '// ==/UserScript==';
 const bodyStart = src.indexOf(endMark) + endMark.length;
-const body = tidyBody(stripComments(dropVmDevLines(src.slice(bodyStart))));
+const body = tidyBody(stripComments(dropVmDevLines(dropVmDevRegions(src.slice(bodyStart)))));
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, header + body, 'utf8');
 
 const linesIn = src.split(/\n/).length;
 const linesOut = (header + body).split(/\n/).length;
-const dropped = (src.match(/@vm-dev\b/g) || []).length;
+const regionMarks = (src.match(/\/\/\s*>>>\s*@vm-dev/g) || []).length;
+const lineMarks = (src.match(/@vm-dev\b/g) || []).length;
 console.log('OK', path.relative(ROOT, OUT));
-console.log('lignes', linesIn, '→', linesOut, '| @vm-dev retirés:', dropped);
+console.log('lignes', linesIn, '→', linesOut, '| @vm-dev blocs:', regionMarks, '| marqueurs ligne:', lineMarks);
