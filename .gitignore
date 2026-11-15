@@ -7,9 +7,10 @@ _*.js
 !tools/empreinte.js
 !tools/publier.js
 
-# Artefact GreasyFork généré localement (régénérer : node tools/publier.js)
-# Décommenter la ligne suivante pour ne pas versionner dist/ :
-# dist/
+# Source mainteneur (commentaires + @vm-dev) — jamais sur le dépôt public
+dbf.js
+
+# Artefact GreasyFork / public : dist/ + version-min.json (seule build utilisateur)
 
 # Heavy / unrelated trees
 dbf server/
