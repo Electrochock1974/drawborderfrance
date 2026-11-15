@@ -7,5 +7,5 @@
     "2026.11.15.012": "0f45928c164791ff9ec444aa1462f8687b8a25e4809cb3c57f8e560fd85bd126",
     "2026.11.15.013": "9a66b6078b8740e6d2535f54d668378b00b31f8a793abbb00fec52dfaa5db0cd"
   },
-  "_lisezmoi": "Empreinte = SHA-256 de _wmeIntegre.toString() dans le navigateur (LF). Source de vérité : ligne console WME. Copie modifiée d’une version publiée → script bloqué."
+  "_lisezmoi": "Empreinte = SHA-256 de _wmeIntegre.toString() dans le navigateur (LF). Après chaque release : ajouter empreintes[v] ET mettre min=v → versions plus anciennes bloquées (modifiée ou obsolète)."
 }

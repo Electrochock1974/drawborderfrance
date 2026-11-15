@@ -11,7 +11,8 @@ Dépôt : https://github.com/Electrochock1974/drawborderfrance
 - Empreinte ≠ publiée → **script bloqué** (copie modifiée), même pour le mainteneur  
   → monter `@version`, tester, puis enregistrer la nouvelle empreinte
 - Version absente de `version-min.json` → bloqué, **sauf** mainteneur (test avant pub)
-- Version `< min` → bloqué (retirée)
+- Version `< min` → bloqué (retirée) — **bloque aussi les vieux clients** qui n’ont pas encore la logique « latest »
+- Version `< max(empreintes)` → bloqué (mise à jour publiée)
 - GitHub injoignable → démarrage (fail-open)
 
 ## Avant chaque release GreasyFork
@@ -21,12 +22,14 @@ Dépôt : https://github.com/Electrochock1974/drawborderfrance
 3. Console : copier le hash  
    `empreintes["x.y.z"] = "<hash>"`  
    (**référence navigateur** — pas `node tools/empreinte.js`)
-4. Ajouter l’entrée dans `version-min.json` et pousser sur GitHub
+4. Ajouter l’entrée dans `version-min.json`, **mettre `min` à cette version**, et pousser sur GitHub  
+   → dès que `min` / la nouvelle empreinte est en ligne, les anciennes versions sont bloquées
 5. Publier `dbf.js` sur [GreasyFork #8138](https://greasyfork.org/scripts/8138)
 
 ## Retirer une version
 
-Monter `min` au-dessus des versions à invalider. Les clients encore sur une version `< min` voient le bandeau « retirée ».
+Monter `min` au-dessus des versions à invalider (en pratique : `min` = dernière version publiée).  
+Les clients encore en dessous voient le bandeau « obsolète » et ne démarrent pas.
 
 ## Limite
 
