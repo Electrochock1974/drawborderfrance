@@ -2,7 +2,7 @@
   "min": "2026.11.15.008",
   "empreintes": {
     "2026.11.15.008": "dd1c4c543fbb00ae66291b8fdf3a6c901cac62c43850a8a9c6096fbe44042213",
-    "2026.11.15.009": "d1399105959ea80d698714da3af7c1fbce8daa179cfcab590ceb22ffd9db24bf"
+    "2026.11.15.009": "9ebd03d26bff31ca797161058d5fb20f62209cd02773a3323eb70a6ce805c02d"
   },
-  "_lisezmoi": "Version minimale autorisée et empreinte SHA-256 du code de chaque version publiée (texte de l’enveloppe _wmeIntegre, fins de ligne LF). Calcul : node tools/empreinte.js. URL : raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json. Une version < min ou absente des empreintes (hors mainteneur) ne démarre pas. Un écart d’empreinte sur une version connue n’est plus bloquant (avertissement console)."
+  "_lisezmoi": "Empreinte = SHA-256 de _wmeIntegre.toString() dans le navigateur (LF). Source de vérité : ligne console « empreinte … » après chargement WME. tools/empreinte.js est une approx. Node (peut différer de Tampermonkey). URL : raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json"
 }

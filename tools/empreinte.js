@@ -6,14 +6,11 @@
  *   node tools/empreinte.js
  *   node tools/empreinte.js ../dbf.js
  *
- * Flux de publication :
- *   1. Modifier dbf.js et monter @version (ex. 2026.11.15.008)
- *   2. node tools/empreinte.js  → copier le hash affiché
- *   3. Ajouter dans version-min.json : "2026.11.15.008": "<hash>"
- *      (et éventuellement relever "min" si tu retires d'anciennes versions)
- *   4. Pousser version-min.json sur le dépôt GitHub pointé par _VM_URL
- *      (Electrochock1974/drawborderfrance, branche main)
- *   5. Publier dbf.js sur GreasyFork
+ * ⚠️ Approximation Node. La source de vérité est le hash affiché en console WME :
+ *   [WME Draw Borders France v…] empreinte <hash>
+ *   ( _wmeIntegre.toString() côté Tampermonkey peut différer de l’extraction fichier. )
+ *
+ * Flux de publication : voir tools/PUBLISH.md
  *
  * Fail-open : si version-min.json est injoignable, le script démarre quand même.
  */

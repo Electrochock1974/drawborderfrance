@@ -9,10 +9,13 @@ Dépôt : https://github.com/Electrochock1974/drawborderfrance
 ## Avant chaque release GreasyFork
 
 1. Monter `// @version` dans `dbf.js`
-2. `node tools/empreinte.js` → copier l’empreinte
-3. Ajouter l’entrée dans `version-min.json` (`empreintes["x.y.z"]`)
-4. Pousser `version-min.json` (et le dépôt) sur GitHub **avant** ou en même temps que GreasyFork
-5. Publier `dbf.js` sur [GreasyFork #8138](https://greasyfork.org/scripts/8138)
+2. Installer / recharger le script dans Tampermonkey, ouvrir WME
+3. En console, copier le hash de la ligne  
+   `[WME Draw Borders France v…] empreinte <hash>`  
+   (**c’est la référence** — `node tools/empreinte.js` peut différer de Tampermonkey)
+4. Ajouter l’entrée dans `version-min.json` (`empreintes["x.y.z"] = "<hash>"`)
+5. Pousser `version-min.json` sur GitHub **avant** ou avec GreasyFork
+6. Publier `dbf.js` sur [GreasyFork #8138](https://greasyfork.org/scripts/8138)
 
 ## Retirer une version
 
