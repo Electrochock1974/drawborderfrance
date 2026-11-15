@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.018
+// @version      2026.11.15.019
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
-// @description  Familles Lecture + Assistance (WME France). BAN WFS + BAL + lookup officiels ; communes ADMIN EXPRESS COG-CARTO ; géocodage/signalement officiels. Sources : BAN + Admin Express (Licence Ouverte).
+// @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée.
 // @author       Sebiseba & Electrochock1974
 // @copyright    Sebiseba 2017-2026 (Inspired by Draw Border - ©giovanni-cortinovis)
 // @license      MIT
+// @homepageURL  https://github.com/Electrochock1974/drawborderfrance
+// @supportURL   https://github.com/Electrochock1974/drawborderfrance/issues
 // @include      https://www.waze.com/*/editor*
 // @include      https://beta.waze.com/*/editor*
 // @match        https://www.waze.com/*/editor*
@@ -260,7 +262,9 @@
                     labelOutlineColor: "${getLabelOutlineColor}",
                     labelOutlineWidth: "${getLabelOutlineWidth}",
                     labelYOffset: "${getLabelYOffset}",
-                    graphicZIndex: "${getGraphicZIndex}"
+                    graphicZIndex: "${getGraphicZIndex}",
+
+                    pointerEvents: "none"
                 }
             },
             {
@@ -278,7 +282,8 @@
                     graphicZIndex: "${getGraphicZIndex}",
                     fillOpacity: 1,
                     pointRadius: 0,
-                    label: ""
+                    label: "",
+                    pointerEvents: "none"
                 }
             }
         ];
@@ -1932,40 +1937,44 @@
        DBF DESIGN SYSTEM — Premium Modern Theme
        ============================================= */
 
-    /* --- Design Tokens --- */
+    /* --- Design Tokens (charte scripts FR — WMW 14/11/2026) --- */
     :root {
+        --dbf-blue: #2196f3;
+        --dbf-blue-btn: #1976d2;
+        --dbf-blue-dk: #1565c0;
         --dbf-bg: #ffffff;
-        --dbf-bg-subtle: #f8fafc;
+        --dbf-bg-subtle: #f5f7f9;
         --dbf-bg-hover: #f1f5f9;
-        --dbf-bg-active: #eef2ff;
-        --dbf-border: #e2e8f0;
-        --dbf-border-hover: #c7d2fe;
-        --dbf-text: #1e293b;
-        --dbf-text-secondary: #64748b;
-        --dbf-text-muted: #94a3b8;
-        --dbf-accent: #4f46e5;
-        --dbf-accent-light: #e0e7ff;
-        --dbf-accent-text: #3730a3;
-        --dbf-success: #059669;
+        --dbf-bg-active: #e3f2fd;
+        --dbf-border: #dde3ea;
+        --dbf-border-hover: #cfd8e2;
+        --dbf-text: #2d3748;
+        --dbf-text-secondary: #566372;
+        --dbf-text-muted: #566372;
+        --dbf-accent: #2196f3;
+        --dbf-accent-light: #e3f2fd;
+        --dbf-accent-text: #1565c0;
+        --dbf-success: #2e7d32;
         --dbf-success-bg: #ecfdf5;
         --dbf-success-border: #6ee7b7;
         --dbf-warn: #c2410c;
         --dbf-warn-bg: #fff7ed;
         --dbf-warn-border: #fdba74;
-        --dbf-danger: #dc2626;
-        --dbf-danger-bg: #fef2f2;
-        --dbf-radius: 12px;
-        --dbf-radius-sm: 8px;
-        --dbf-shadow: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
-        --dbf-shadow-hover: 0 4px 12px rgba(15,23,42,.08);
-        --dbf-transition: .2s cubic-bezier(.4,0,.2,1);
-        --dbf-font: 'Inter', 'Waze Sans', system-ui, -apple-system, sans-serif;
+        --dbf-danger: #c62828;
+        --dbf-danger-bg: #ffebee;
+        --dbf-radius: 8px;
+        --dbf-radius-sm: 6px;
+        --dbf-shadow: none;
+        --dbf-shadow-hover: none;
+        --dbf-transition: .2s ease;
+        --dbf-font: 'Rubik', 'Open Sans', 'Waze Sans', sans-serif;
     }
 
     /* --- Global --- */
     #dbf-panel {
-        padding: 8px;
+        padding: 10px 12px;
         font-family: var(--dbf-font);
+        font-size: 12px;
         color: var(--dbf-text);
         line-height: 1.5;
         width: 100%;
@@ -1973,42 +1982,59 @@
         overflow-x: hidden;
         box-sizing: border-box;
         word-break: break-word;
-        padding-top: 1px !important;
     }
     #dbf-panel * {
         box-sizing: border-box;
     }
+    #dbf-panel [hidden] { display: none !important; }
+    #dbf-panel :focus-visible { outline: 2px solid var(--dbf-blue-dk); outline-offset: 1px; }
     .userscripts-api-docs-link-container {
         display: none !important;
     }
 
-    /* --- Header --- */
-    #dbf-header {
+    /* --- Titre charte (h2) --- */
+    #dbf-panel h2.dbf-h2 {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 14px 16px;
-        background: var(--dbf-bg-subtle);
-        border-radius: var(--dbf-radius);
-        border: 1px solid var(--dbf-border);
-        margin-bottom: 14px;
-        transition: box-shadow var(--dbf-transition);
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--dbf-blue-btn);
+        margin: 0 0 8px;
+        line-height: 1.3;
     }
-    #dbf-header:hover {
-        box-shadow: var(--dbf-shadow);
-    }
-    #dbf-header .dbf-title {
-        font-size: 15px;
-        font-weight: 800;
-        letter-spacing: -0.01em;
-    }
-    #dbf-header .dbf-version {
+    #dbf-panel h2.dbf-h2 img { width: 18px; height: 18px; flex-shrink: 0; }
+    #dbf-panel h2.dbf-h2 .dbf-ver {
         font-size: 11px;
-        padding: 3px 10px;
-        border-radius: 999px;
-        background: var(--dbf-accent-light);
-        color: var(--dbf-accent-text);
-        font-weight: 600;
+        font-weight: 400;
+        color: var(--dbf-text-secondary);
+    }
+    #dbf-panel .dbf-hint {
+        font-size: 11px;
+        color: var(--dbf-text-secondary);
+        line-height: 1.6;
+        margin: 0 0 10px;
+    }
+    #dbf-panel .dbf-links {
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--dbf-border);
+        font-size: 11px;
+        color: var(--dbf-text-secondary);
+        text-align: center;
+    }
+    #dbf-panel .dbf-links a { color: var(--dbf-blue-dk); }
+    #dbf-panel .dbf-foot {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--dbf-text-secondary);
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* --- Header (pied compact, si présent) --- */
+    #dbf-header {
+        display: none;
     }
 
     /* --- Cards --- */
@@ -2035,12 +2061,14 @@
         border-radius: var(--dbf-radius) var(--dbf-radius) 0 0;
     }
     .dbf-card__title {
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 700;
+        color: var(--dbf-blue-btn);
+        text-transform: uppercase;
+        letter-spacing: .05em;
         display: flex;
         align-items: center;
         gap: 8px;
-        letter-spacing: -0.01em;
     }
     .dbf-card__body {
         padding: 14px 16px;
@@ -2219,37 +2247,41 @@
     .dbf-toggle input { display: none; }
     .dbf-toggle__track {
         position: relative;
-        width: 34px; min-width: 34px; height: 18px;
-        background: var(--dbf-border, #cbd5e1);
-        border-radius: 9px;
-        transition: background 0.25s ease;
+        width: 36px; min-width: 36px; height: 20px;
+        background: #8a94a0;
+        border-radius: 50px;
+        transition: background 0.2s;
+        flex-shrink: 0;
     }
     .dbf-toggle__track::after {
         content: '';
         position: absolute;
-        top: 2px; left: 2px;
+        top: 3px; left: 3px;
         width: 14px; height: 14px;
         background: #fff;
         border-radius: 50%;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        transition: transform 0.25s ease;
+        transition: transform 0.2s;
     }
     .dbf-toggle input:checked + .dbf-toggle__track {
-        background: linear-gradient(135deg, #6366f1, #818cf8);
+        background: var(--dbf-blue);
     }
     .dbf-toggle input:checked + .dbf-toggle__track::after {
         transform: translateX(16px);
     }
-    .dbf-toggle__label { color: var(--dbf-text, #334155); }
+    .dbf-toggle input:focus-visible + .dbf-toggle__track {
+        outline: 2px solid var(--dbf-blue-dk);
+        outline-offset: 2px;
+    }
+    .dbf-toggle__label { color: var(--dbf-text); font-weight: 600; }
     .dbf-section-divider {
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: var(--dbf-text-muted);
-        margin: 12px 0 6px;
-        padding-bottom: 4px;
-        border-bottom: 1px solid var(--dbf-border);
+        color: var(--dbf-blue-btn);
+        margin: 14px 0 6px;
+        padding-bottom: 0;
+        border-bottom: none;
         grid-column: 1 / -1;
     }
     .dbf-section-divider:first-child { margin-top: 0; }
@@ -2528,6 +2560,9 @@
         var DBFcontent =
             `<div id="dbf-panel">
 
+        <h2 class="dbf-h2"><img src="${icon_DrB}" alt="" width="18" height="18"> WME Draw Borders France <span class="dbf-ver">v${GM_info.script.version}</span></h2>
+        <p class="dbf-hint">Affiche les adresses BAN et les limites ADMIN EXPRESS pour aider l’édition France. Aucun objet n’est créé sur la carte.</p>
+
         <div class="dbf-card">
         <div class="dbf-card__head">
             <div class="dbf-card__title">📡 Sources officielles</div>
@@ -2644,14 +2679,14 @@
             </div>
         </div>
         </div>
-        <div id="dbf-footer" style="margin-top:25px; padding-top:15px; border-top:1px solid #e5e7eb;">
-    <div id="dbf-header" style="margin-bottom:0;">
-        <div class="dbf-title">WME Draw Borders France</div>
-        <div class="dbf-version">v${GM_info.script.version}</div>
-        <div class="dbf-right">
-        <a href="https://greasyfork.org/fr/scripts/8138-wme-draw-borders-france" target="_blank">Documentation</a>
+        <div class="dbf-links">
+            <a href="https://www.waze.com/forum/" target="_blank" rel="noopener">💬 Discuss</a>
+            ·
+            <a href="https://greasyfork.org/fr/scripts/8138-wme-draw-borders-france" target="_blank" rel="noopener">🔗 GreasyFork</a>
+            ·
+            <a href="https://github.com/Electrochock1974/drawborderfrance" target="_blank" rel="noopener">GitHub</a>
         </div>
-    </div>
+        <p class="dbf-foot">🔒 Le script ne crée aucun objet sur la carte.</p>
     <div id="loadBanData" style="display:none"></div>
     <div id="loadMiscData" style="display:none"></div>
     </div>`;
@@ -3754,32 +3789,10 @@
 
     function DBF_readLegacySegmentHouseNumbers() {
         var out = [];
-        var seen = Object.create(null);
         for (var k in _dbfLocalHn) {
             if (!_dbfLocalHn[k]) continue;
-            seen[k] = true;
             out.push(_dbfLocalHn[k]);
         }
-        try {
-            var W = DBF_pageWindow && typeof DBF_pageWindow.W !== 'undefined' ? DBF_pageWindow.W : null;
-            var store = W && W.model && W.model.segmentHouseNumbers;
-            var objs = store && store.objects;
-            if (!objs) return out;
-            for (var id in objs) {
-                if (!Object.prototype.hasOwnProperty.call(objs, id)) continue;
-                var hn = objs[id];
-                var attrs = hn && (hn.attributes || hn);
-                if (!attrs) continue;
-                var number = attrs.number;
-                var segId = attrs.segID != null ? attrs.segID
-                    : (attrs.segmentId != null ? attrs.segmentId : attrs.segId);
-                if (number == null || number === "" || segId == null) continue;
-                var sk = DBF_hnSegKey(segId, number);
-                if (seen[sk]) continue;
-                seen[sk] = true;
-                out.push({ number: number, segmentId: segId });
-            }
-        } catch (e) {  }
         return out;
     }
 
@@ -4283,11 +4296,12 @@
     function DBF_addStyledFeature(layer, featId, geometry, styleObj, attributes) {
         if (!layer || !geometry) return;
         if (featId && DBF_hasFeature(layer, featId)) return;
+        var st = styleObj ? Object.assign({}, styleObj, { pointerEvents: "none" }) : { pointerEvents: "none" };
         layer.addFeatures([{
             id: featId,
             geometry: geometry,
             attributes: attributes || {},
-            style: styleObj || null
+            style: st
         }]);
     }
 
