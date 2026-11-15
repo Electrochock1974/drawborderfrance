@@ -10,9 +10,8 @@
  *   [WME Draw Borders France v…] empreinte <hash>
  *   ( _wmeIntegre.toString() côté Tampermonkey peut différer de l’extraction fichier. )
  *
- * Flux de publication : voir tools/PUBLISH.md
- *
- * Fail-open : si version-min.json est injoignable, le script démarre quand même.
+ * Publication GreasyFork : node tools/publier.js → dist/*.user.js
+ * (empreinte à prendre sur la version dist installée dans le navigateur).
  */
 'use strict';
 

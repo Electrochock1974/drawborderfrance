@@ -5,6 +5,11 @@ __pycache__/
 _*.py
 _*.js
 !tools/empreinte.js
+!tools/publier.js
+
+# Artefact GreasyFork généré localement (régénérer : node tools/publier.js)
+# Décommenter la ligne suivante pour ne pas versionner dist/ :
+# dist/
 
 # Heavy / unrelated trees
 dbf server/
