@@ -1,0 +1,14 @@
+# Local / working copies
+*.bak*
+*.backup
+__pycache__/
+_*.py
+_*.js
+!tools/empreinte.js
+
+# Heavy / unrelated trees
+dbf server/
+site/
+correction/
+app.py
+AUDIT_scripts-paste.txt
