@@ -25,6 +25,7 @@
 // @connect      raw.githubusercontent.com
 // @connect      cdn.jsdelivr.net
 // @connect      api.github.com
+// @connect      docs.google.com
 // @namespace Sebiseba
 // @downloadURL https://update.greasyfork.org/scripts/8138/WME%20Draw%20Borders%20France.user.js
 // @updateURL https://update.greasyfork.org/scripts/8138/WME%20Draw%20Borders%20France.meta.js
