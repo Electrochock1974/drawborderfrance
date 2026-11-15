@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * Génère la version GreasyFork : en-tête userscript intact (@grant, @connect…),
- * corps sans commentaires ligne/bloc (chaînes, templates et regex préservés).
+ * Génère la version GreasyFork / dépôt :
+ * - en-tête userscript intact (@grant, @connect…)
+ * - sans commentaires ligne/bloc (chaînes, templates et regex préservés)
+ * - sans lignes marquées @vm-dev (ex. console empreinte — réservées à dbf.js local)
  *
  * Usage :
  *   node tools/publier.js
@@ -195,16 +197,23 @@ function tidyBody(body) {
         .replace(/\n*$/, '\n');
 }
 
+function dropVmDevLines(body) {
+    return body.split(/\r?\n/).filter(function (line) {
+        return !/@vm-dev\b/.test(line);
+    }).join('\n');
+}
+
 const src = fs.readFileSync(SRC, 'utf8');
 const header = extractHeader(src);
 const endMark = '// ==/UserScript==';
 const bodyStart = src.indexOf(endMark) + endMark.length;
-const body = tidyBody(stripComments(src.slice(bodyStart)));
+const body = tidyBody(stripComments(dropVmDevLines(src.slice(bodyStart))));
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, header + body, 'utf8');
 
 const linesIn = src.split(/\n/).length;
 const linesOut = (header + body).split(/\n/).length;
+const dropped = (src.match(/@vm-dev\b/g) || []).length;
 console.log('OK', path.relative(ROOT, OUT));
-console.log('lignes', linesIn, '→', linesOut);
+console.log('lignes', linesIn, '→', linesOut, '| @vm-dev retirés:', dropped);
