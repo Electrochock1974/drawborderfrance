@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.017
+// @version      2026.11.15.018
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
 // @description  Familles Lecture + Assistance (WME France). BAN WFS + BAL + lookup officiels ; communes ADMIN EXPRESS COG-CARTO ; géocodage/signalement officiels. Sources : BAN + Admin Express (Licence Ouverte).
 // @author       Sebiseba & Electrochock1974
@@ -19,7 +19,6 @@
 // @connect      plateforme-bal.adresse.data.gouv.fr
 // @connect      geo.api.gouv.fr
 // @connect      api-lannuaire.service-public.fr
-// @connect      radars.securite-routiere.gouv.fr
 // @connect      signalement.adresse.data.gouv.fr
 // @connect      raw.githubusercontent.com
 // @connect      cdn.jsdelivr.net
@@ -1127,10 +1126,6 @@
         if (checked) show_border();
     }
 
-    function LayerCamToggled(checked) {
-        if (Cam_Layer) Cam_Layer.setVisibility(checked);
-        if (checked) show_border();
-    }
     function LayerBanToggled(checked) {
         if (Ban_Layer) Ban_Layer.setVisibility(checked);
         DBF_syncHnWithBan(!!checked);
@@ -1642,14 +1637,9 @@
 
         Cty_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Cty", "Limites des communes");
         Dpt_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Dpt", "Limites des départements");
-        PR_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_PR", "Points Routiers");
-        Cam_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Cam", "Radars");
+
         Ban_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Ban", "Adresses BAN");
-        Equip_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Equip", "Équipements");
-        Etabl_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Etabl", "Établissements");
-        RS_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_RS", "Panneaux routiers Icones");
-        Bump_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Bump", "Ralentisseurs OSM");
-        Signals_Layer = DBF_ensureSdkLayer("__WME_Draw_Border_Signals", "Feux tricolores OSM");
+
         DBFstep2();
     }
 
@@ -1709,7 +1699,6 @@
             { name: "Limites des communes", id: "layer-switcher-item_dbf_communes", toggle: LayerVilToggled, unique: "__WME_Draw_Border_Cty", tooltip: "Limites communales ADMIN EXPRESS COG-CARTO (source officielle IGN/Géoplateforme)." },
             { name: "Limites des départements", id: "layer-switcher-item_dbf_departements", toggle: LayerDepToggled, unique: "__WME_Draw_Border_Dpt" },
 
-            { name: "Radars", id: "layer-switcher-item_dbf_radars", toggle: LayerCamToggled, unique: "__WME_Draw_Border_Cam" },
             { name: "Adresses BAN", id: "layer-switcher-item_dbf_ban", toggle: LayerBanToggled, unique: "__WME_Draw_Border_Ban", tooltip: "Affiche les adresses BAN (source officielle IGN/Géoplateforme) à partir du zoom 19." },
 
         ];
@@ -1803,7 +1792,7 @@
             });
         }
         insertScriptHTML();
-        try { load_radar(); } catch (e) { console.warn('[DBF] load_radar ignoré:', e); }
+
         console.log('[DBF] Initialisation terminée');
     }
     const DBF_DEFAULT_STYLES = {
@@ -2606,7 +2595,7 @@
 
         <div class="dbf-card">
         <div class="dbf-card__head">
-            <div class="dbf-card__title">🗺️ Limites, PR, Radars, Équipements</div>
+            <div class="dbf-card__title">🗺️ Limites &amp; zoom</div>
         </div>
         <div class="dbf-card__body">
             <div id="zoomMiscValue" class="dbf-pill">Zoom: —</div>
@@ -2667,6 +2656,29 @@
     <div id="loadMiscData" style="display:none"></div>
     </div>`;
 
+        var RScontent =
+            "<div style='margin:8px 0 10px;'>"
+            + "<wz-label>Guide des panneaux</wz-label>"
+            + "<p style='margin:6px 0 10px;font-size:11px;color:#555;line-height:1.45;'>Repères visuels pour reconnaître les panneaux courants (sans jargon technique).</p>"
+            + "<div style='margin:6px 0 10px; padding:8px 10px; background:rgba(0,0,0,.03); border-radius:8px;'>"
+            + "<div style='font-size:11px; font-weight:600; margin-bottom:6px; color:#555;'>Filtrer par type :</div>"
+            + "<div style='display:flex; flex-wrap:wrap; gap:6px 14px; font-size:11px;'>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='Tout cocher/décocher'><input type='checkbox' id='rsFilterAll' checked> <b>Tout</b></label>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='B14, B31, B33'><input type='checkbox' class='rsFilterCb' data-family='B' id='rsFilterB' checked> 🚫 Limitations (B14…)</label>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='EB10, EB20'><input type='checkbox' class='rsFilterCb' data-family='EB' id='rsFilterEB' checked> 🏘️ Agglo (EB10 / EB20)</label>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='C107, C108'><input type='checkbox' class='rsFilterCb' data-family='C1' id='rsFilterC1' checked> ➡️ Route réglementée (C107…)</label>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='C207, C208'><input type='checkbox' class='rsFilterCb' data-family='C2' id='rsFilterC2' checked> 🛣️ Autoroutes (C207…)</label>"
+            + "<label style='display:flex;align-items:center;gap:3px;cursor:pointer' title='M1, M2, M3, M4, M9z…'><input type='checkbox' class='rsFilterCb' data-family='M' id='rsFilterM' checked> 📋 Panonceaux (M…)</label>"
+            + "</div>"
+            + "<div id='rsSpeedCheck' style='margin-top:8px; font-size:11px; color:#555;'></div>"
+            + "</div>"
+            + "<div id='rsLegendContainer' style='display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;'></div>"
+            + "<div style='margin-top:10px;display:flex;gap:8px;align-items:center'>"
+            + "<wz-button id='rsLegendRefresh' size='sm'>Rafraîchir</wz-button>"
+            + "<wz-body2 id='rsLegendStatus' style='color:#666'></wz-body2>"
+            + "</div>"
+            + "</div>";
+
         var CustomContent =
             `<div id="dbf-custom-panel">
 
@@ -2712,6 +2724,8 @@
         </div>
     </details>
 
+    <!-- COMMENTÉ — calques non officiels (Équipements / Établissements) -->
+    <!--
     <details>
         <summary>🏗️ Équipements</summary>
         <div class="dbf-detail-body">
@@ -2737,7 +2751,10 @@
         <div class="dbf-form-row"><label>Épaisseur contour</label><input id="dbfEtablOutlineWidth" type="number" min="0" max="12" value="3"></div>
         </div>
     </details>
+    -->
 
+    <!-- COMMENTÉ — Radars / Points routiers (pas sources officielles pour l’instant) -->
+    <!--
     <details>
         <summary>📸 Radars</summary>
         <div class="dbf-detail-body">
@@ -2763,7 +2780,10 @@
         <div class="dbf-form-row"><label>Épaisseur contour</label><input id="dbfPrOutlineWidth" type="number" min="0" max="12" value="3"></div>
         </div>
     </details>
+    -->
 
+    <!-- COMMENTÉ — style calque Panneaux / OSM (le guide éducatif reste dans l’onglet Panneaux) -->
+    <!--
     <details>
         <summary>🪧 Panneaux routiers</summary>
         <div class="dbf-detail-body">
@@ -2804,6 +2824,7 @@
         <div class="dbf-form-row"><label>Épaisseur contour</label><input id="dbfSigOutlineWidth" type="number" min="0" max="12" value="3"></div>
         </div>
     </details>
+    -->
 
     <details>
         <summary>📖 Dictionnaire d'abréviations</summary>
@@ -2838,10 +2859,12 @@
         DBFaddon.innerHTML =
             "<ul class='dbf-nav' id='dbf-subtabs' style='margin:0 0 10px 0;'>"
             + "<li class='dbf-nav-item active'><a data-pane='dbf-pane-settings'>Paramètres</a></li>"
+            + "<li class='dbf-nav-item'><a data-pane='dbf-pane-signs'>Panneaux</a></li>"
             + "<li class='dbf-nav-item'><a data-pane='dbf-pane-custom'>Personnalisation</a></li>"
             + "</ul>"
             + "<div class='dbf-tab-content'>"
             + "<div class='dbf-tab-pane active' id='dbf-pane-settings'>" + DBFcontent + "</div>"
+            + "<div class='dbf-tab-pane' id='dbf-pane-signs' style='display:none'>" + RScontent + "</div>"
             + "<div class='dbf-tab-pane' id='dbf-pane-custom'>" + CustomContent + "</div>"
             + "</div>";
 
@@ -2912,55 +2935,60 @@
             if (status) status.textContent = "Génération…";
 
             const items = [
-                { code: "EB10", label: "EB10 (entrée agglo – vierge)" },
-                { code: "EB20", label: "EB20 (sortie agglo – vierge)" },
-                { code: "B14", value: "30", label: "B14-30" },
-                { code: "B14", value: "50", label: "B14-50" },
-                { code: "B14", value: "70", label: "B14-70" },
-                { code: "B31", label: "B31 (fin d’interdictions)" },
-                { code: "B33", value: "70", label: "B33-70 (fin de limitation)" },
-                { code: "C107", label: "C107 (route réglementée – début)" },
-                { code: "C108", label: "C108 (route réglementée – fin)" },
-                { code: "C207", label: "C207 (début autoroute)" },
-                { code: "C208", label: "C208 (fin autoroute)" },
-
-                { code: "M1", value: "350", label: "M1 – 350 m" },
-                { code: "M1", value: "1200", label: "M1 – 1,2 km" },
-                { code: "M2", value: "500", label: "M2 – étendue 500 m" },
-                { code: "M2", value: "2000", label: "M2 – étendue 2 km" },
-
-                { code: "M3A", value: "droite", label: "M3a – flèche à droite" },
-                { code: "M3A", value: "gauche", label: "M3a – flèche à gauche" },
-                { code: "M3D", label: "M3d – flèche vers le bas (voie)" },
-
-                { code: "M4A", label: "M4a – voiture (≤ 3,5 t)" },
-                { code: "M4B", label: "M4b – bus / TC" },
-                { code: "M4C", label: "M4c – moto" },
-                { code: "M4F", value: "3.5", label: "M4f – masse 3,5 t" },
-                { code: "M4F", value: "≤ 7.5", label: "M4f – masse ≤ 7,5 t" },
-                { code: "M4G", label: "M4g – marchandises (camion)" },
-                { code: "M4K", label: "M4k – matières inflammables" },
-                { code: "M4L", label: "M4l – matières polluantes" },
-                { code: "M4M", label: "M4m – matières dangereuses (ADR)" },
-                { code: "M4X", label: "M4x – remorque > 250 kg" },
-
-                { code: "M9Z", label: "M9z – RAPPEL" }
+                { code: "EB10", family: "EB", label: "Entrée d’agglomération (EB10)" },
+                { code: "EB20", family: "EB", label: "Sortie d’agglomération (EB20)" },
+                { code: "B14", value: "30", family: "B", label: "Limitation à 30 km/h (B14)" },
+                { code: "B14", value: "50", family: "B", label: "Limitation à 50 km/h (B14)" },
+                { code: "B14", value: "70", family: "B", label: "Limitation à 70 km/h (B14)" },
+                { code: "B31", family: "B", label: "Fin de toutes les interdictions (B31)" },
+                { code: "B33", value: "70", family: "B", label: "Fin de limitation 70 (B33)" },
+                { code: "C107", family: "C1", label: "Début de route réglementée (C107)" },
+                { code: "C108", family: "C1", label: "Fin de route réglementée (C108)" },
+                { code: "C207", family: "C2", label: "Début d’autoroute (C207)" },
+                { code: "C208", family: "C2", label: "Fin d’autoroute (C208)" },
+                { code: "M1", value: "350", family: "M", label: "Dans 350 m (M1)" },
+                { code: "M1", value: "1200", family: "M", label: "Dans 1,2 km (M1)" },
+                { code: "M2", value: "500", family: "M", label: "Sur 500 m (M2)" },
+                { code: "M2", value: "2000", family: "M", label: "Sur 2 km (M2)" },
+                { code: "M3A", value: "droite", family: "M", label: "Flèche à droite (M3a)" },
+                { code: "M3A", value: "gauche", family: "M", label: "Flèche à gauche (M3a)" },
+                { code: "M3D", family: "M", label: "Flèche vers le bas (M3d)" },
+                { code: "M4A", family: "M", label: "Voitures ≤ 3,5 t (M4a)" },
+                { code: "M4B", family: "M", label: "Bus / transports en commun (M4b)" },
+                { code: "M4C", family: "M", label: "Motos (M4c)" },
+                { code: "M4F", value: "3.5", family: "M", label: "Masse 3,5 t (M4f)" },
+                { code: "M4F", value: "≤ 7.5", family: "M", label: "Masse ≤ 7,5 t (M4f)" },
+                { code: "M4G", family: "M", label: "Camions / marchandises (M4g)" },
+                { code: "M4K", family: "M", label: "Matières inflammables (M4k)" },
+                { code: "M4L", family: "M", label: "Matières polluantes (M4l)" },
+                { code: "M4M", family: "M", label: "Matières dangereuses (M4m)" },
+                { code: "M4X", family: "M", label: "Remorque > 250 kg (M4x)" },
+                { code: "M9Z", family: "M", label: "Rappel (M9z)" }
             ];
 
+            var enabled = {};
+            Array.from(document.querySelectorAll('.rsFilterCb')).forEach(function (cb) {
+                enabled[cb.getAttribute('data-family')] = !!cb.checked;
+            });
+            var allCb = document.getElementById('rsFilterAll');
+            var showAll = allCb ? !!allCb.checked : true;
+
+            var shown = 0;
             items.forEach(function (it) {
+                if (!showAll && it.family && enabled[it.family] === false) return;
+
                 var card = document.createElement("div");
                 card.style.cssText = "border:1px solid #e2e4e7;border-radius:8px;padding:8px;background:#fff;";
 
                 var title = document.createElement("div");
                 title.style.cssText = "font-weight:600;font-size:12px;margin-bottom:6px;word-break:break-word;";
-                title.textContent = it.label || (it.code + (it.value ? (" " + it.value) : ""));
+                title.textContent = it.label || it.code;
                 card.appendChild(title);
 
                 var prev = document.createElement("div");
-                prev.style.cssText = "display:flex;align-items:center;justify-content:center;min-height:84px;margin-bottom:6px;";
+                prev.style.cssText = "display:flex;align-items:center;justify-content:center;min-height:84px;";
                 var icon = null;
                 try {
-
                     if (/^M/i.test(it.code)) icon = RS_buildPanonceau(it.code, it.value, 120);
                     else icon = RS_buildIcon(it.code, it.value);
                 } catch (e) { console.error("[RS] RS_buildIcon error", it, e); }
@@ -2975,20 +3003,11 @@
                     prev.innerHTML = "<span style='color:#c00;font-size:12px;'>Erreur rendu</span>";
                 }
                 card.appendChild(prev);
-
-                var meta = document.createElement("div");
-                meta.style.cssText = "font-family:monospace;font-size:11px;color:#444;margin-bottom:2px;";
-                meta.textContent = "code: " + it.code + (it.value ? (" | value: " + it.value) : "");
-                card.appendChild(meta);
-
-                var spacer = document.createElement("div");
-                spacer.style.cssText = "height:0;";
-                card.appendChild(spacer);
-
                 cont.appendChild(card);
+                shown++;
             });
 
-            if (status) status.textContent = "OK (" + items.length + " panneaux)";
+            if (status) status.textContent = shown + " panneau" + (shown > 1 ? "x" : "");
         }
 
         document.addEventListener('click', function (e) {
@@ -3165,61 +3184,6 @@
             { id: "dbfBanOutlineColor", sec: "ban", key: "labelOutlineColor", type: "val" },
             { id: "dbfBanOutlineWidth", sec: "ban", key: "labelOutlineWidth", type: "val" },
 
-            { id: "dbfEquipStroke", sec: "equip", key: "strokeColor", type: "val" },
-            { id: "dbfEquipStrokeWidth", sec: "equip", key: "strokeWidth", type: "val" },
-            { id: "dbfEquipFontColor", sec: "equip", key: "fontColor", type: "val" },
-            { id: "dbfEquipFontSize", sec: "equip", key: "fontSize", type: "val" },
-            { id: "dbfEquipFontBold", sec: "equip", key: "fontBold", type: "chk" },
-            { id: "dbfEquipOutlineColor", sec: "equip", key: "labelOutlineColor", type: "val" },
-            { id: "dbfEquipOutlineWidth", sec: "equip", key: "labelOutlineWidth", type: "val" },
-
-            { id: "dbfEtablStroke", sec: "etabl", key: "strokeColor", type: "val" },
-            { id: "dbfEtablStrokeWidth", sec: "etabl", key: "strokeWidth", type: "val" },
-            { id: "dbfEtablFontColor", sec: "etabl", key: "fontColor", type: "val" },
-            { id: "dbfEtablFontSize", sec: "etabl", key: "fontSize", type: "val" },
-            { id: "dbfEtablFontBold", sec: "etabl", key: "fontBold", type: "chk" },
-            { id: "dbfEtablOutlineColor", sec: "etabl", key: "labelOutlineColor", type: "val" },
-            { id: "dbfEtablOutlineWidth", sec: "etabl", key: "labelOutlineWidth", type: "val" },
-
-            { id: "dbfRadarStroke", sec: "radar", key: "strokeColor", type: "val" },
-            { id: "dbfRadarStrokeWidth", sec: "radar", key: "strokeWidth", type: "val" },
-            { id: "dbfRadarFontColor", sec: "radar", key: "fontColor", type: "val" },
-            { id: "dbfRadarFontSize", sec: "radar", key: "fontSize", type: "val" },
-            { id: "dbfRadarFontBold", sec: "radar", key: "fontBold", type: "chk" },
-            { id: "dbfRadarOutlineColor", sec: "radar", key: "labelOutlineColor", type: "val" },
-            { id: "dbfRadarOutlineWidth", sec: "radar", key: "labelOutlineWidth", type: "val" },
-
-            { id: "dbfPrStroke", sec: "pr", key: "strokeColor", type: "val" },
-            { id: "dbfPrStrokeWidth", sec: "pr", key: "strokeWidth", type: "val" },
-            { id: "dbfPrFontColor", sec: "pr", key: "fontColor", type: "val" },
-            { id: "dbfPrFontSize", sec: "pr", key: "fontSize", type: "val" },
-            { id: "dbfPrFontBold", sec: "pr", key: "fontBold", type: "chk" },
-            { id: "dbfPrOutlineColor", sec: "pr", key: "labelOutlineColor", type: "val" },
-            { id: "dbfPrOutlineWidth", sec: "pr", key: "labelOutlineWidth", type: "val" },
-
-            { id: "dbfRsScale", sec: "rs", key: "scale", type: "pct", fallback: 1 },
-
-            { id: "dbfBumpFillColor", sec: "bump", key: "fillColor", type: "val" },
-            { id: "dbfBumpStrokeColor", sec: "bump", key: "strokeColor", type: "val" },
-            { id: "dbfBumpFillOpacity", sec: "bump", key: "fillOpacity", type: "pct", fallback: 0.35 },
-            { id: "dbfBumpStrokeWidth", sec: "bump", key: "strokeWidth", type: "val" },
-            { id: "dbfBumpPointRadius", sec: "bump", key: "pointRadius", type: "val" },
-            { id: "dbfBumpFontColor", sec: "bump", key: "fontColor", type: "val" },
-            { id: "dbfBumpFontSize", sec: "bump", key: "fontSize", type: "val" },
-            { id: "dbfBumpFontBold", sec: "bump", key: "fontBold", type: "chk" },
-            { id: "dbfBumpOutlineColor", sec: "bump", key: "labelOutlineColor", type: "val" },
-            { id: "dbfBumpOutlineWidth", sec: "bump", key: "labelOutlineWidth", type: "val" },
-
-            { id: "dbfSigFillColor", sec: "signals", key: "fillColor", type: "val" },
-            { id: "dbfSigStrokeColor", sec: "signals", key: "strokeColor", type: "val" },
-            { id: "dbfSigFillOpacity", sec: "signals", key: "fillOpacity", type: "pct", fallback: 0.35 },
-            { id: "dbfSigStrokeWidth", sec: "signals", key: "strokeWidth", type: "val" },
-            { id: "dbfSigPointRadius", sec: "signals", key: "pointRadius", type: "val" },
-            { id: "dbfSigFontColor", sec: "signals", key: "fontColor", type: "val" },
-            { id: "dbfSigFontSize", sec: "signals", key: "fontSize", type: "val" },
-            { id: "dbfSigFontBold", sec: "signals", key: "fontBold", type: "chk" },
-            { id: "dbfSigOutlineColor", sec: "signals", key: "labelOutlineColor", type: "val" },
-            { id: "dbfSigOutlineWidth", sec: "signals", key: "labelOutlineWidth", type: "val" }
         ];
 
         FIELDS.forEach(function (f) {
@@ -3581,39 +3545,11 @@
     }
 
     function load_radar() {
-
         var zoomMiscEl = getId('zoomMiscValue');
         if (zoomMiscEl) {
             zoomMiscEl.innerHTML = "Zoom: " + DBF_getZoom();
             zoomMiscEl.style.backgroundColor = DBF_getZoom() < 13 ? '#fac3c3' : '#bbffcc';
         }
-        if (DBF_getZoom() < 13) return;
-
-        var listCam = localStorage.speedCamList;
-
-        var _lmdr = getId('loadMiscData'); if (_lmdr) _lmdr.style.backgroundColor = '#bbffcc';
-        try {
-            var ret = GM_xmlhttpRequest({
-                method: 'GET',
-                url: 'https://radars.securite-routiere.gouv.fr/radars/all?_format=json',
-                onload: function (response) {
-                    if (response.status === 200) {
-                        try {
-                            if (_.isEqual(JSON.parse(listCam), JSON.parse(response.responseText)) !== true && response.responseText) {
-                                if (debug) console.log("WME Draw Borders France: Mise à jour de la liste des radars");
-                                localStorage.setItem('speedCamList', response.responseText);
-                            }
-                            var _lmdr2 = getId('loadMiscData'); if (_lmdr2) _lmdr2.style.backgroundColor = '#ffffff';
-                        } catch (e) { console.warn("Erreur parsing Radars", e); }
-                    } else {
-                        var _lmdr3 = getId('loadMiscData'); if (_lmdr3) _lmdr3.style.backgroundColor = '#fac3c3';
-                    }
-                },
-                onerror: function (error) {
-                    console.error("Erreur réseau :", error);
-                }
-            });
-        } catch (ex) { console.error(`${SCRIPT_NAME}:`, ex); }
     }
 
     var DBF_APOSTROPHE_RE = /[\u0027\u2018\u2019\u00B4\u02BC\u0060\u2032\u02BB\u201B]/g;
@@ -5483,6 +5419,10 @@
 
     function RS_initFilters() {
         RS_loadFilterState();
+        var refreshLegend = function () {
+            var btn = document.getElementById('rsLegendRefresh');
+            if (btn) btn.click();
+        };
 
         var allCb = document.getElementById('rsFilterAll');
         if (allCb) {
@@ -5490,7 +5430,7 @@
                 var checked = this.checked;
                 document.querySelectorAll('.rsFilterCb').forEach(function (cb) { cb.checked = checked; });
                 RS_saveFilterState();
-                debounced_show_border();
+                refreshLegend();
             });
         }
 
@@ -5498,7 +5438,7 @@
             cb.addEventListener('change', function () {
                 RS_syncFilterAll();
                 RS_saveFilterState();
-                debounced_show_border();
+                refreshLegend();
             });
         });
     }
@@ -6328,10 +6268,11 @@
         }
     }
 
-    const _VM_URL_API = 'https://api.github.com/repos/Electrochock1974/drawborderfrance/contents/version-min.json?ref=main';
-    const _VM_URL = 'https://raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json';
-    const _VM_URL_FALLBACK = 'https://cdn.jsdelivr.net/gh/Electrochock1974/drawborderfrance@main/version-min.json';
-    const _VM_MAJ = 'https://greasyfork.org/scripts/8138';
+    const _vmDec = function (b) { try { return atob(b); } catch (e) { return ''; } };
+    const _VM_URL_API = _vmDec('aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9FbGVjdHJvY2hvY2sxOTc0L2RyYXdib3JkZXJmcmFuY2UvY29udGVudHMvdmVyc2lvbi1taW4uanNvbj9yZWY9bWFpbg==');
+    const _VM_URL = _vmDec('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0VsZWN0cm9jaG9jazE5NzQvZHJhd2JvcmRlcmZyYW5jZS9tYWluL3ZlcnNpb24tbWluLmpzb24=');
+    const _VM_URL_FALLBACK = _vmDec('aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0VsZWN0cm9jaG9jazE5NzQvZHJhd2JvcmRlcmZyYW5jZUBtYWluL3ZlcnNpb24tbWluLmpzb24=');
+    const _VM_MAJ = _vmDec('aHR0cHM6Ly9ncmVhc3lmb3JrLm9yZy9zY3JpcHRzLzgxMzg=');
     const _VM_AUTEURS = [0x5c67ddf5, 0x15d80e62];
 
     const _vmCmp = function (a, b) {
