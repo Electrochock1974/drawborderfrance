@@ -3,7 +3,8 @@
   "empreintes": {
     "2026.11.15.008": "dd1c4c543fbb00ae66291b8fdf3a6c901cac62c43850a8a9c6096fbe44042213",
     "2026.11.15.009": "9ebd03d26bff31ca797161058d5fb20f62209cd02773a3323eb70a6ce805c02d",
-    "2026.11.15.010": "56ade87aa1debfa52c47ad236f6151ef8da00390d5cc404a2b3b0086453437ce"
+    "2026.11.15.010": "56ade87aa1debfa52c47ad236f6151ef8da00390d5cc404a2b3b0086453437ce",
+    "2026.11.15.012": "0f45928c164791ff9ec444aa1462f8687b8a25e4809cb3c57f8e560fd85bd126"
   },
-  "_lisezmoi": "Empreinte = SHA-256 de _wmeIntegre.toString() dans le navigateur (LF). Source de vérité : ligne console WME. URL : raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json"
+  "_lisezmoi": "Empreinte = SHA-256 de _wmeIntegre.toString() dans le navigateur (LF). Source de vérité : ligne console WME. Copie modifiée d’une version publiée → script bloqué."
 }
