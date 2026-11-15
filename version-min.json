@@ -1,7 +1,8 @@
 {
   "min": "2026.11.15.008",
   "empreintes": {
-    "2026.11.15.008": "dd1c4c543fbb00ae66291b8fdf3a6c901cac62c43850a8a9c6096fbe44042213"
+    "2026.11.15.008": "dd1c4c543fbb00ae66291b8fdf3a6c901cac62c43850a8a9c6096fbe44042213",
+    "2026.11.15.009": "d1399105959ea80d698714da3af7c1fbce8daa179cfcab590ceb22ffd9db24bf"
   },
-  "_lisezmoi": "Version minimale autorisée et empreinte SHA-256 du code de chaque version publiée (texte de l’enveloppe _wmeIntegre, fins de ligne LF). Calcul : node tools/empreinte.js. Héberger ce fichier à l’URL _VM_URL du script (raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json). Une version plus ancienne, une copie modifiée ou une version absente ne démarre pas (sauf mainteneur)."
+  "_lisezmoi": "Version minimale autorisée et empreinte SHA-256 du code de chaque version publiée (texte de l’enveloppe _wmeIntegre, fins de ligne LF). Calcul : node tools/empreinte.js. URL : raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json. Une version < min ou absente des empreintes (hors mainteneur) ne démarre pas. Un écart d’empreinte sur une version connue n’est plus bloquant (avertissement console)."
 }
