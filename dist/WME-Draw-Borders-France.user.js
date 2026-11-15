@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.015
+// @version      2026.11.15.016
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
 // @description  Familles Lecture + Assistance (WME France). BAN WFS + BAL + lookup officiels ; communes ADMIN EXPRESS COG-CARTO ; géocodage/signalement officiels. Sources : BAN + Admin Express (Licence Ouverte).
 // @author       Sebiseba & Electrochock1974
@@ -6447,19 +6447,19 @@
         }).join('');
     };
 
+    const _vmLogMainteneur = function (msg) {
+        Promise.resolve(_vmAuteur()).then(function (ok) {
+            if (ok) console.info(msg);
+        }).catch(function () {  });
+    };
+
     const _vmVerdict = async function () {
         var src = '';
         try { src = _wmeIntegre.toString(); } catch (e) { src = ''; }
         var h = '';
         if (typeof src === 'string' && src.length) {
-            try {
-                h = await _vmEmpreinte(src);
-                console.info('[' + String(SCRIPT_NAME) + ' v' + String(VERSION) + '] empreinte ' + h);
-            } catch (e) { h = ''; }
+            try { h = await _vmEmpreinte(src); } catch (e) { h = ''; }
         }
-        try {
-            document.documentElement.setAttribute('data-vm-' + _vmHx(_VM_URL).toString(36), h || 'sans-source');
-        } catch (e) { }
         var j = await _vmJson();
         if (!j || typeof j !== 'object') return null;
         var v = String(VERSION);
@@ -6487,9 +6487,14 @@
         }
         if (typeof src !== 'string' || !src.length) return null;
         if (!h) return null;
-        if (h === String(attendue).toLowerCase()) return null;
+        if (h === String(attendue).toLowerCase()) {
+            _vmLogMainteneur('[' + SCRIPT_NAME + ' v' + v + '] empreinte OK ' + h);
+            return null;
+        }
 
-        console.warn('[' + SCRIPT_NAME + '] empreinte invalide — attendu ' + attendue + ', local ' + h);
+        if (await _vmAuteur()) {
+            console.warn('[' + SCRIPT_NAME + '] empreinte invalide — attendu ' + attendue + ', local ' + h);
+        }
         return { motif: 'modifiee' };
     };
     const _vmBandeau = function (j) {
