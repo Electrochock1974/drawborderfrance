@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.019
+// @version      2026.11.15.020
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
 // @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée.
 // @author       Sebiseba & Electrochock1974
@@ -541,6 +541,7 @@
         readAt: null
     };
     var _dbfLocalHn = Object.create(null);
+    var _dbfLocalHnById = Object.create(null);
 
     function DBF_gmGet(url, timeoutMs, essais) {
         essais = essais == null ? 2 : essais;
@@ -1767,22 +1768,42 @@
         DBF_onSdkEvent("wme-no-edits", DBF_onBanModelChange);
 
         function DBF_onHouseNumberSdkEvent(kind, payload) {
-            try {
-                var hn = payload && (payload.houseNumber || payload.object || payload.data || payload);
-                if (Array.isArray(hn)) hn = hn[0];
-                var number = hn && (hn.number != null ? hn.number
-                    : (hn.attributes && hn.attributes.number));
-                var segId = hn && (hn.segmentId != null ? hn.segmentId
-                    : (hn.attributes && (hn.attributes.segID != null ? hn.attributes.segID : hn.attributes.segmentId)));
-                if (kind === 'deleted') DBF_forgetLocalHn(number, segId);
-                else DBF_rememberLocalHn(number, segId);
-            } catch (eHn) {  }
-            DBF_onBanModelChange();
+            Promise.resolve().then(async function () {
+                try {
+                    var id = payload && (payload.houseNumberId
+                        || (payload.houseNumber && payload.houseNumber.id)
+                        || payload.id);
+                    var hn = null;
+                    if (payload && payload.houseNumber && payload.houseNumber.number != null) {
+                        hn = payload.houseNumber;
+                    } else if (payload && payload.number != null && payload.segmentId != null) {
+                        hn = payload;
+                    } else if (id && wmeSDK && wmeSDK.DataModel && wmeSDK.DataModel.HouseNumbers
+                        && typeof wmeSDK.DataModel.HouseNumbers.getById === 'function') {
+                        try {
+                            hn = await DBF_await(wmeSDK.DataModel.HouseNumbers.getById({ houseNumberId: String(id) }));
+                        } catch (eGet) { hn = null; }
+                    }
+                    var number = hn && (hn.number != null ? hn.number
+                        : (hn.attributes && hn.attributes.number));
+                    var segId = hn && (hn.segmentId != null ? hn.segmentId
+                        : (hn.attributes && (hn.attributes.segID != null ? hn.attributes.segID : hn.attributes.segmentId)));
+                    if (kind === 'deleted') {
+                        if (id) DBF_forgetLocalHnById(id);
+                        else DBF_forgetLocalHn(number, segId);
+                    } else if (number != null && segId != null) {
+                        DBF_rememberLocalHn(number, segId, id);
+                    }
+                } catch (eHn) {  }
+                DBF_onBanModelChange();
+            });
         }
         DBF_onSdkEvent("wme-house-number-added", function (p) { DBF_onHouseNumberSdkEvent('added', p); });
         DBF_onSdkEvent("wme-house-number-deleted", function (p) { DBF_onHouseNumberSdkEvent('deleted', p); });
         DBF_onSdkEvent("wme-house-number-updated", function (p) { DBF_onHouseNumberSdkEvent('updated', p); });
         DBF_onSdkEvent("wme-house-number-moved", function (p) { DBF_onHouseNumberSdkEvent('moved', p); });
+
+        DBF_onSdkEvent("wme-map-house-number-marker-added", function () { DBF_onBanModelChange(); });
 
         const banCheckboxEl = DBF_getBanLayerCheckboxEl();
         if (banCheckboxEl) {
@@ -3777,14 +3798,27 @@
         }
     }
 
-    function DBF_rememberLocalHn(number, segmentId) {
+    function DBF_rememberLocalHn(number, segmentId, houseNumberId) {
         if (number == null || number === "" || segmentId == null) return;
         _dbfLocalHn[DBF_hnSegKey(segmentId, number)] = { number: number, segmentId: segmentId };
+        if (houseNumberId != null && houseNumberId !== "") {
+            _dbfLocalHnById[String(houseNumberId)] = { number: number, segmentId: segmentId };
+        }
     }
 
     function DBF_forgetLocalHn(number, segmentId) {
         if (number == null || segmentId == null) return;
         delete _dbfLocalHn[DBF_hnSegKey(segmentId, number)];
+    }
+
+    function DBF_forgetLocalHnById(houseNumberId) {
+        if (houseNumberId == null || houseNumberId === "") return;
+        var id = String(houseNumberId);
+        var info = _dbfLocalHnById[id];
+        if (info) {
+            DBF_forgetLocalHn(info.number, info.segmentId);
+            delete _dbfLocalHnById[id];
+        }
     }
 
     function DBF_readLegacySegmentHouseNumbers() {
