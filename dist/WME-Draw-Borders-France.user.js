@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.023
+// @version      2026.11.15.024
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
-// @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée.
+// @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée. Dictionnaire CRN (surbrillance noms) : WME Check Road Name © buchet37.
 // @author       Sebiseba & Electrochock1974
-// @copyright    Sebiseba 2017-2026 (Inspired by Draw Border - ©giovanni-cortinovis)
+// @copyright    Sebiseba 2017-2026 (Inspired by Draw Border - ©giovanni-cortinovis). Dictionnaire CRN : WME Check Road Name © buchet37 — https://greasyfork.org/scripts/3776-wme-check-road-name
 // @license      MIT
 // @homepageURL  https://github.com/Electrochock1974/drawborderfrance
 // @supportURL   https://github.com/Electrochock1974/drawborderfrance/issues
@@ -6626,12 +6626,16 @@
 
         var lab = document.createElement('label');
         lab.className = 'dbf-toggle';
-        lab.title = 'Dictionnaire CRN embarqué — surbrille automatiquement les segments dont le nom serait reformaté';
+        lab.title = 'Dictionnaire CRN (WME Check Road Name © buchet37) — surbrille les segments dont le nom serait reformaté';
         lab.innerHTML = '<input type="checkbox" name="optionDBFCrnHl" id="optionDBFCrnHl">'
             + '<span class="dbf-toggle__track"></span>'
             + '<span class="dbf-toggle__label">Surbrillance noms à formater</span>';
         var chk = lab.querySelector('#optionDBFCrnHl');
         if (chk) chk.checked = savedOn;
+
+        var credit = document.createElement('div');
+        credit.style.cssText = 'font-size:10px;color:#6b7280;margin-top:4px;line-height:1.35;';
+        credit.innerHTML = 'D’après <a href="https://greasyfork.org/scripts/3776-wme-check-road-name" target="_blank" rel="noopener">WME Check Road Name</a> © buchet37';
 
         var st = document.createElement('div');
         st.id = 'dbfCrnFormatStatus';
@@ -6654,6 +6658,7 @@
         });
 
         wrap.appendChild(lab);
+        wrap.appendChild(credit);
         wrap.appendChild(st);
         host.appendChild(wrap);
 
