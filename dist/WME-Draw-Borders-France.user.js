@@ -2724,8 +2724,6 @@
             <a href="https://www.waze.com/forum/" target="_blank" rel="noopener">💬 Discuss</a>
             ·
             <a href="https://greasyfork.org/fr/scripts/8138-wme-draw-borders-france" target="_blank" rel="noopener">🔗 GreasyFork</a>
-            ·
-            <a href="https://github.com/Electrochock1974/drawborderfrance" target="_blank" rel="noopener">GitHub</a>
         </div>
         <p class="dbf-foot">🔒 Le script ne crée aucun objet sur la carte.</p>
     <div id="loadBanData" style="display:none"></div>
@@ -6665,11 +6663,10 @@
         }
     }
 
-    const _vmDec = function (b) { try { return atob(b); } catch (e) { return ''; } };
-    const _VM_URL_API = _vmDec('aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9FbGVjdHJvY2hvY2sxOTc0L2RyYXdib3JkZXJmcmFuY2UvY29udGVudHMvdmVyc2lvbi1taW4uanNvbj9yZWY9bWFpbg==');
-    const _VM_URL = _vmDec('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0VsZWN0cm9jaG9jazE5NzQvZHJhd2JvcmRlcmZyYW5jZS9tYWluL3ZlcnNpb24tbWluLmpzb24=');
-    const _VM_URL_FALLBACK = _vmDec('aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0VsZWN0cm9jaG9jazE5NzQvZHJhd2JvcmRlcmZyYW5jZUBtYWluL3ZlcnNpb24tbWluLmpzb24=');
-    const _VM_MAJ = _vmDec('aHR0cHM6Ly9ncmVhc3lmb3JrLm9yZy9zY3JpcHRzLzgxMzg=');
+    const _VM_URL_API = 'https://api.github.com/repos/Electrochock1974/drawborderfrance/contents/version-min.json?ref=main';
+    const _VM_URL = 'https://raw.githubusercontent.com/Electrochock1974/drawborderfrance/main/version-min.json';
+    const _VM_URL_FALLBACK = 'https://cdn.jsdelivr.net/gh/Electrochock1974/drawborderfrance@main/version-min.json';
+    const _VM_MAJ = 'https://greasyfork.org/scripts/8138';
     const _VM_AUTEURS = [0x5c67ddf5, 0x15d80e62];
 
     const _vmCmp = function (a, b) {
