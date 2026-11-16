@@ -5,13 +5,11 @@
  * Usage :
  *   node tools/empreinte.js
  *   node tools/empreinte.js ../dbf.js
+ *   node tools/empreinte.js ../dist/WME-Draw-Borders-France.user.js
  *
- * ⚠️ Approximation Node. La source de vérité est le hash affiché en console WME :
- *   [WME Draw Borders France v…] empreinte <hash>
- *   ( _wmeIntegre.toString() côté Tampermonkey peut différer de l’extraction fichier. )
+ * Préfère Function#toString() via eval (aligné Tampermonkey) ; repli extraction fichier.
  *
- * Publication GreasyFork : node tools/publier.js → dist/*.user.js
- * (empreinte à prendre sur la version dist installée dans le navigateur).
+ * Publication : node tools/publier.js → dist/*.user.js puis empreinte sur dist.
  */
 'use strict';
 
@@ -22,69 +20,97 @@ const crypto = require('crypto');
 const file = path.resolve(process.argv[2] || path.join(__dirname, '..', 'dbf.js'));
 const src = fs.readFileSync(file, 'utf8');
 
-const marker = 'function _wmeIntegre()';
-const start = src.indexOf(marker);
-if (start < 0) {
-    console.error('Introuvable: function _wmeIntegre() dans', file);
+function normalize(fnText) {
+    return String(fnText).replace(/\r\n/g, '\n').split('\n')
+        .filter((l) => !/^\/\/ @(downloadURL|updateURL)\b/.test(l))
+        .join('\n');
+}
+
+function hashText(fnText) {
+    return crypto.createHash('sha256').update(normalize(fnText), 'utf8').digest('hex');
+}
+
+/** Empreinte via toString() — source de vérité proche du navigateur. */
+function viaToString(source) {
+    const endMark = '// ==/UserScript==';
+    const idx = source.indexOf(endMark);
+    let code = (idx >= 0 ? source.slice(idx + endMark.length) : source).replace(/^\uFEFF/, '').trim();
+    if (!/\(function\s+_wmeIntegre\s*\(/.test(code)) return null;
+    code = code.replace(/\)\s*\(\s*\)\s*;?\s*$/, ')');
+    let fn;
+    try {
+        fn = eval(code); // eslint-disable-line no-eval
+    } catch (e) {
+        return null;
+    }
+    if (typeof fn !== 'function') return null;
+    return {
+        method: 'toString',
+        text: Function.prototype.toString.call(fn),
+        hash: hashText(Function.prototype.toString.call(fn))
+    };
+}
+
+/** Repli : découpe fichier sur accolades (peut diverger si parse { } imperfect). */
+function viaFileSlice(source) {
+    const marker = 'function _wmeIntegre()';
+    const start = source.indexOf(marker);
+    if (start < 0) return null;
+    let i = source.indexOf('{', start);
+    if (i < 0) return null;
+    let depth = 0;
+    let inLine = false;
+    let inBlock = false;
+    let inS = null;
+    let esc = false;
+    let tpl = 0;
+    const endLimit = source.length;
+    for (; i < endLimit; i++) {
+        const c = source[i];
+        const n = source[i + 1] || '';
+        if (inLine) {
+            if (c === '\n') inLine = false;
+            continue;
+        }
+        if (inBlock) {
+            if (c === '*' && n === '/') { inBlock = false; i++; }
+            continue;
+        }
+        if (inS) {
+            if (esc) { esc = false; continue; }
+            if (c === '\\') { esc = true; continue; }
+            if (inS === '`' && c === '$' && n === '{') { tpl++; i++; continue; }
+            if (inS === '`' && c === '}' && tpl) { tpl--; continue; }
+            if (c === inS && (inS !== '`' || tpl === 0)) inS = null;
+            continue;
+        }
+        if (c === '/' && n === '/') { inLine = true; i++; continue; }
+        if (c === '/' && n === '*') { inBlock = true; i++; continue; }
+        if (c === '"' || c === "'" || c === '`') { inS = c; continue; }
+        if (c === '{') depth++;
+        else if (c === '}') {
+            depth--;
+            if (depth === 0) { i++; break; }
+        }
+    }
+    const text = source.slice(start, i);
+    return { method: 'file-slice', text: text, hash: hashText(text) };
+}
+
+const primary = viaToString(src) || viaFileSlice(src);
+if (!primary) {
+    console.error('Impossible de calculer l’empreinte pour', file);
     process.exit(1);
 }
-
-// Extraire le corps { … } équilibré (ignore { } dans chaînes / templates / commentaires)
-let i = src.indexOf('{', start);
-if (i < 0) {
-    console.error('Accolade ouvrante introuvable');
-    process.exit(1);
-}
-let depth = 0;
-let inLine = false;
-let inBlock = false;
-let inS = null;
-let esc = false;
-let tpl = 0;
-const endLimit = src.length;
-for (; i < endLimit; i++) {
-    const c = src[i];
-    const n = src[i + 1] || '';
-    if (inLine) {
-        if (c === '\n') inLine = false;
-        continue;
-    }
-    if (inBlock) {
-        if (c === '*' && n === '/') { inBlock = false; i++; }
-        continue;
-    }
-    if (inS) {
-        if (esc) { esc = false; continue; }
-        if (c === '\\') { esc = true; continue; }
-        if (inS === '`' && c === '$' && n === '{') { tpl++; i++; continue; }
-        if (inS === '`' && c === '}' && tpl) { tpl--; continue; }
-        if (c === inS && (inS !== '`' || tpl === 0)) inS = null;
-        continue;
-    }
-    if (c === '/' && n === '/') { inLine = true; i++; continue; }
-    if (c === '/' && n === '*') { inBlock = true; i++; continue; }
-    if (c === '"' || c === "'" || c === '`') { inS = c; continue; }
-    if (c === '{') depth++;
-    else if (c === '}') {
-        depth--;
-        if (depth === 0) { i++; break; }
-    }
-}
-
-const fnText = src.slice(start, i);
-const normalized = fnText.replace(/\r\n/g, '\n').split('\n')
-    .filter((l) => !/^\/\/ @(downloadURL|updateURL)\b/.test(l))
-    .join('\n');
-
-const hash = crypto.createHash('sha256').update(normalized, 'utf8').digest('hex');
 
 const verMatch = src.match(/\/\/\s*@version\s+(\S+)/);
 const version = verMatch ? verMatch[1] : '?';
 
 console.log('fichier   :', file);
 console.log('version   :', version);
-console.log('octets    :', Buffer.byteLength(normalized, 'utf8'));
-console.log('empreinte :', hash);
+console.log('méthode   :', primary.method);
+console.log('octets    :', Buffer.byteLength(normalize(primary.text), 'utf8'));
+console.log('empreinte :', primary.hash);
 console.log('');
 console.log('À coller dans version-min.json → empreintes["' + version + '"] :');
-console.log(JSON.stringify(hash));
+console.log(JSON.stringify(primary.hash));
