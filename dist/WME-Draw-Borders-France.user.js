@@ -2721,7 +2721,7 @@
         </div>
         </div>
         <div class="dbf-links">
-            <a href="https://www.waze.com/forum/" target="_blank" rel="noopener">💬 Discuss</a>
+            <a href="https://discord.com/channels/763092304100851743/1248917556023136296" target="_blank" rel="noopener">💬 Discord</a>
             ·
             <a href="https://greasyfork.org/fr/scripts/8138-wme-draw-borders-france" target="_blank" rel="noopener">🔗 GreasyFork</a>
         </div>
