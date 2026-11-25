@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         WME Draw Borders France
-// @version      2026.11.15.026
+// @version      2026.11.25.001
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCJJREFUWIWtl09oHFUcx7/fN7vJ1jSlrUp2c2oCPRjddGcGoV5sqBSk0IKCh4JF0RwC2grVIP6B1pOIIJWIlygIWkEsUvVYWrGnXmYmzcqqKK0HkdWW7aFKd5PZ9/WQ3WWzyW4nyf5gYd7v/d77fub33vzePiKheZ53GsCJRnMuDMN3ko7tZU6SINd1jxtjPiR5X+M3lc1mr5fL5cWtApgkQSQPreN70ff93FYBEmUgm80WSB7oANgj6ZVcLrc/l8vFQ0NDv1cqlfpGAVJJgkjebm9LugbgNwBHSB4GcHjHjh0V3/e/qtfr3xhjTgI4BOCGpBNRFF3qOve9xPP5/Hg6nb4GYIjkrKQoDMMrAOKJiYndmUzmGIDnAfgk18wn6Q7J8SAIbm0GgJ7nXSY5Za09F0XRs90CJycnH3Ec5zmSp0iu2lvW2qNRFH2/3riem9B13ZdITkkq12q1k71iFxcXf4qiaBbAr+1+SarX6ze6jesKkM/nx0m+K0nW2plSqVTpBdAmeELSnTbXv3Ec/7VRAKbT6U9Jbpf05cLCwrdJxAEgiqJLJMettUcl/UhyOJPJvN8tft094Lruy8aYOUnlarX6cNK377RCobDXGLMIYFDSVBRFVzpj1tSBfD4/7jjOeQBpa+3xYrG4sBlxACiXy5XR0VFD8iCA/bt27Zq/efPmqlrRWgLP8057nndrYGDgl82kvpvdvXv3PUk/k3xo27Ztr3f2G2Cl1pM8Q/J+AOlG3+WtigNAqVRakjQjyUp6s1Ao7F0D0KXWT/UDAAAaa/8ZyYwxZt513SO+7z/QApC05jtdz7cVq1ars42qeMAY852k667rPmEAII7js5Jam03SQhzHZ/sJkEqlRgFsb7ZJDpOcMwBQLBZvA3gVAKy1V8MwfLTh65s5jjO2zlkx1voKrLUjDbI/AMT9FAeApaWlBUnqcF9sHcckswAg6e9+iwPA4ODgGZKUVG2Kx3E83Q4wAgDGmHK/xX3fnwbwgqT/SD4WBEGx2dcCkDRCEtbavmbA8zxf0tyKhGbCMCy297f2QDMD/VyCiYmJ3QDOk8xI+jiKoi86Y9YAGGP6BWAymcw5knustVdrtdqpdYOaD5KyALC8vNwXANd1T5N8UtI/cRw/UyqVlnoBkOSDkjQwMLBlgEKhcJjk25JiAMeKxeKf3WJTAJDP58ewcghVgiBY3qRuyvO8xyXtJDnf+F/4VhAEPQ81ep53EMAFksOSRPKDIAhe24jyvn37djqO8wPJQpv7QhAETwPoLD6rqQF8RHIYWFkHSadc1x0HkDgTJMc6xGGtXbyXeBNgrGMyknwqqXgvqCRxKQAXARxpOhpH5gw2kAFrrWuMeaPdJ+liIoA4jqdTqdQnaLtKhWHY9SrVxb72PK+Gtut7FEWfJxn4P1GVx29d/9ycAAAAAElFTkSuQmCC
-// @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée. Dictionnaire CRN (surbrillance noms) : WME Check Road Name © buchet37.
+// @description  Familles Lecture + Assistance (WME France). BAN WFS/BAL/lookup + communes ADMIN EXPRESS COG-CARTO (Géoplateforme IGN, Licence Ouverte). Ce qui part : vers data.geopf.fr bbox carte + code INSEE ; vers geo.api.gouv.fr recherches de commune ; vers signalement.adresse.data.gouv.fr / plateforme-bal code INSEE ; vers api-lannuaire.service-public.fr mairie ; vers GitHub/jsDelivr version-min.json (intégrité). Aucune identité Waze ni géométrie éditée envoyée. Dictionnaire CRN (surbrillance noms) : WME Check Road Name © buchet37. Progression commune/département (carreaux WME) : inspiré de WME BAN Coverage © DrSlump34 (MIT).
 // @author       Sebiseba & Electrochock1974
-// @copyright    Sebiseba 2017-2026 (Inspired by Draw Border - ©giovanni-cortinovis). Dictionnaire CRN : WME Check Road Name © buchet37 — https://greasyfork.org/scripts/3776-wme-check-road-name
+// @copyright    Sebiseba 2017-2026 (Inspired by Draw Border - ©giovanni-cortinovis). Dictionnaire CRN : WME Check Road Name © buchet37 — https://greasyfork.org/scripts/3776-wme-check-road-name. Progression WME/BAN (carreaux) : WME BAN Coverage © DrSlump34 (MIT) — https://greasyfork.org/scripts/600088-wme-ban-coverage
 // @license      MIT
 // @homepageURL  https://github.com/Electrochock1974/drawborderfrance
 // @supportURL   https://github.com/Electrochock1974/drawborderfrance/issues
@@ -31,6 +31,13 @@
 // ==/UserScript==
 
 (function _wmeIntegre() {
+
+    try {
+        console.warn(
+            '[DBF] script injecté — v'
+            + ((typeof GM_info !== 'undefined' && GM_info.script && GM_info.script.version) || '?')
+        );
+    } catch (eInj) {  }
 
     const Math = globalThis.Math, Number = globalThis.Number, Date = globalThis.Date;
 
@@ -520,12 +527,14 @@
     const ANNUAIRE_API = 'https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/records';
     var _mairieMailCache = Object.create(null);
     var _signalementStatusCache = Object.create(null);
-    const DBF_WFS_BAN_LAYER = 'BAN.DATA.GOUV:ban';
+
+    const DBF_WFS_BAN_LAYER = 'BAN-PLUS:adresse';
 
     const DBF_WFS_COMMUNE_LAYER = 'ADMINEXPRESS-COG-CARTO.LATEST:commune';
     const DBF_WFS_PAGE = 5000;
     const DBF_WFS_MAX = 15000;
-    const DBF_BAN_PROPERTYNAME = 'id,numero,rep,nom_voie,nom_commune,nom_ancienne_commune,certification_commune,code_insee,lon,lat,nom_ld';
+
+    const DBF_BAN_PROPERTYNAME = 'id,id_adr,numero,rep,nom_voie,insee_com,nom_com,position,geom';
     const DBF_COMMUNE_PROPERTYNAME = 'nom_officiel,code_insee,code_insee_du_departement,geometrie';
     window.adresses_list = [];
     var _banDrawCache = null;
@@ -543,6 +552,7 @@
     var _dbfLocalHn = Object.create(null);
     var _dbfLocalHnById = Object.create(null);
     var _dbfLocalBanKeys = Object.create(null);
+    var _dbfLocalBanKeysByHn = Object.create(null);
 
     function DBF_gmGet(url, timeoutMs, essais) {
         essais = essais == null ? 2 : essais;
@@ -556,11 +566,18 @@
                         anonymous: true,
                         onload: function (r) {
                             if (r.status >= 200 && r.status < 300) resolve(r);
-                            else reject(Object.assign(new Error('HTTP ' + r.status), { status: r.status }));
+                            else {
+                                var snippet = '';
+                                try { snippet = String(r.responseText || '').replace(/\s+/g, ' ').slice(0, 280); } catch (e) { }
+                                reject(Object.assign(
+                                    new Error('HTTP ' + r.status + (snippet ? ' — ' + snippet : '')),
+                                    { status: r.status, body: r.responseText, url: url }
+                                ));
+                            }
                         },
-                        onerror: function () { reject(Object.assign(new Error('network'), { reseau: true })); },
-                        ontimeout: function () { reject(Object.assign(new Error('timeout'), { reseau: true })); },
-                        onabort: function () { reject(new Error('abort')); }
+                        onerror: function () { reject(Object.assign(new Error('network'), { reseau: true, url: url })); },
+                        ontimeout: function () { reject(Object.assign(new Error('timeout'), { reseau: true, url: url })); },
+                        onabort: function () { reject(Object.assign(new Error('abort'), { url: url })); }
                     });
                 } catch (e) { reject(e); }
             }).catch(function (err) {
@@ -574,6 +591,15 @@
         return attempt(1);
     }
 
+    function DBF_isValidWgs84Bbox(bbox) {
+        if (!bbox || bbox.length < 4) return false;
+        var w = Number(bbox[0]), s = Number(bbox[1]), e = Number(bbox[2]), n = Number(bbox[3]);
+        if (![w, s, e, n].every(function (v) { return Number.isFinite(v); })) return false;
+        if (w >= e || s >= n) return false;
+        if (Math.abs(w) > 180 || Math.abs(e) > 180 || Math.abs(s) > 90 || Math.abs(n) > 90) return false;
+        return true;
+    }
+
     function DBF_wfsGetFeatureUrl(typeNames, bbox, startIndex, count, propertyName, sortBy) {
 
         var b = [
@@ -582,12 +608,13 @@
             Number(bbox[2]).toFixed(6),
             Number(bbox[3]).toFixed(6)
         ].join(',') + ',EPSG:4326';
+
         var url = GEOPF_WFS
             + '?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature'
             + '&TYPENAMES=' + encodeURIComponent(typeNames)
             + '&OUTPUTFORMAT=' + encodeURIComponent('application/json')
             + '&SRSNAME=EPSG:4326'
-            + '&BBOX=' + b
+            + '&BBOX=' + encodeURIComponent(b)
             + '&COUNT=' + (count || DBF_WFS_PAGE);
         if (propertyName) url += '&PROPERTYNAME=' + encodeURIComponent(propertyName);
         if (sortBy) url += '&SORTBY=' + encodeURIComponent(sortBy);
@@ -599,21 +626,27 @@
         if (!f) return null;
         var p = f.properties || {};
         var coords = f.geometry && f.geometry.coordinates;
+
         var lon = p.lon != null ? Number(p.lon) : (coords ? Number(coords[0]) : NaN);
         var lat = p.lat != null ? Number(p.lat) : (coords ? Number(coords[1]) : NaN);
         if (!isFinite(lon) || !isFinite(lat)) return null;
         var numero = p.numero != null ? String(p.numero) : '';
         if (numero === '99999') return null;
         var anc = p.nom_ancienne_commune != null ? String(p.nom_ancienne_commune).trim() : '';
+
+        var banId = p.id_adr || p.id || f.id || '';
+        var codeInsee = p.insee_com || p.code_insee || '';
+        var nomCommune = p.nom_com || p.nom_commune || '';
         return {
-            id: p.id || f.id || '',
+            id: banId,
             numero: numero,
             rep: p.rep != null ? String(p.rep) : '',
             nom_voie: p.nom_voie || '',
-            nom_commune: p.nom_commune || '',
+            nom_commune: nomCommune,
             nom_ancienne_commune: anc || null,
-            code_insee: p.code_insee ? String(p.code_insee).toUpperCase() : '',
-            certification_commune: p.certification_commune != null ? String(p.certification_commune) : '0',
+            code_insee: codeInsee ? String(codeInsee).toUpperCase() : '',
+
+            certification_commune: p.certification_commune != null ? String(p.certification_commune) : null,
             date_ajout_modif: null,
             lon: lon,
             lat: lat,
@@ -622,16 +655,35 @@
     }
 
     async function DBF_fetchBanWfs(bbox) {
+        if (!DBF_isValidWgs84Bbox(bbox)) {
+            throw Object.assign(new Error('BAN WFS : bbox invalide ' + JSON.stringify(bbox)), { status: 400 });
+        }
         var byId = Object.create(null);
         var lieuxDits = [];
         var start = 0;
         var matched = null;
         var returned = 0;
+
+        var useProps = false;
         while (start < DBF_WFS_MAX) {
-            var res = await DBF_gmGet(
-                DBF_wfsGetFeatureUrl(DBF_WFS_BAN_LAYER, bbox, start, DBF_WFS_PAGE, DBF_BAN_PROPERTYNAME, 'id'),
-                60000
-            );
+            var res;
+            try {
+                res = await DBF_gmGet(
+                    useProps
+                        ? DBF_wfsGetFeatureUrl(DBF_WFS_BAN_LAYER, bbox, start, DBF_WFS_PAGE, DBF_BAN_PROPERTYNAME, 'id')
+                        : DBF_wfsGetFeatureUrl(DBF_WFS_BAN_LAYER, bbox, start, DBF_WFS_PAGE, null, null),
+                    60000,
+                    1
+                );
+            } catch (eGet) {
+                if (!useProps && eGet && eGet.status === 400 && start === 0) {
+                    console.warn('[DBF] BAN WFS 400 (nu) → retry avec PROPERTYNAME+geom');
+                    useProps = true;
+                    continue;
+                }
+                console.warn('[DBF] BAN WFS échec', eGet && eGet.url, eGet && eGet.message);
+                throw eGet;
+            }
             var data = JSON.parse(res.responseText);
             if (!data || !Array.isArray(data.features)) throw new Error('BAN WFS : format inattendu');
             var feats = data.features;
@@ -642,7 +694,11 @@
             var pageReturned = Number(data.numberReturned);
             if (!isFinite(pageReturned)) pageReturned = feats.length;
             returned += pageReturned;
+
+            var mappedThisPage = 0;
+            var missingGeom = 0;
             for (var i = 0; i < feats.length; i++) {
+                if (feats[i] && (!feats[i].geometry || !feats[i].geometry.coordinates)) missingGeom++;
                 var row = DBF_mapBanWfsFeature(feats[i]);
                 if (!row || !row.id) continue;
                 if (byId[row.id]) continue;
@@ -654,10 +710,25 @@
                         lat: row.lat
                     });
                     byId[row.id] = true;
+                    mappedThisPage++;
                     continue;
                 }
                 if (!row.numero && !row.nom_voie) continue;
                 byId[row.id] = row;
+                mappedThisPage++;
+            }
+
+            if (feats.length && mappedThisPage === 0 && missingGeom === feats.length && useProps && start === 0) {
+                console.warn('[DBF] BAN WFS: features sans geom → retry nu');
+                useProps = false;
+                matched = null;
+                returned = 0;
+                byId = Object.create(null);
+                lieuxDits = [];
+                continue;
+            }
+            if (feats.length && mappedThisPage === 0) {
+                console.warn('[DBF] BAN WFS: ' + feats.length + ' features reçues, 0 mappées (geom manquante ?)');
             }
             start += feats.length;
             if (!feats.length || pageReturned < DBF_WFS_PAGE || returned >= matched) break;
@@ -666,6 +737,7 @@
         for (var id in byId) {
             if (byId[id] && byId[id] !== true) addresses.push(byId[id]);
         }
+        console.log('[DBF] BAN WFS résultat: matched≈' + matched + ' mappées=' + addresses.length);
         return {
             info_ban: addresses,
             lieux_dits: lieuxDits,
@@ -795,6 +867,1032 @@
         return data;
     }
 
+    var DBF_COMMUNE_PCT_KEY = 'DBFcommuneWmePct';
+    var DBF_WME_CARREAU = 0.05;
+    var DBF_WME_ROAD_TYPES = '1,2,3,4,5,6,7,8,9,10,15,16,17,18,19,20,22';
+    var DBF_WME_PARALLEL = 3;
+    var DBF_WME_MAX_TILES = 100;
+    var DBF_WME_TILE_CACHE_MAX = 80;
+    var DBF_DEPT_LOOKUP_PARALLEL = 5;
+
+    var _dbfWmeTileCache = null;
+    var _dbfWmeTileCacheEndTimer = null;
+    var DBF_WME_TILE_CACHE_IDLE_MS = 180000;
+
+    function DBF_wmeTileCacheCancelEnd() {
+        if (_dbfWmeTileCacheEndTimer) {
+            clearTimeout(_dbfWmeTileCacheEndTimer);
+            _dbfWmeTileCacheEndTimer = null;
+        }
+    }
+    function DBF_wmeTileCacheBegin() {
+        DBF_wmeTileCacheCancelEnd();
+        if (_dbfWmeTileCache) return;
+        _dbfWmeTileCache = {
+            features: Object.create(null),
+            order: [],
+            hnBySeg: Object.create(null),
+            hits: 0,
+            misses: 0
+        };
+    }
+    function DBF_wmeTileCacheEnd() {
+        DBF_wmeTileCacheCancelEnd();
+        if (_dbfWmeTileCache && debug) {
+            console.info('[DBF] cache carreaux WME — hits=' + _dbfWmeTileCache.hits
+                + ' misses=' + _dbfWmeTileCache.misses
+                + ' gardés=' + _dbfWmeTileCache.order.length);
+        }
+        _dbfWmeTileCache = null;
+    }
+
+    function DBF_wmeTileCacheScheduleEnd(ms) {
+        DBF_wmeTileCacheCancelEnd();
+        _dbfWmeTileCacheEndTimer = setTimeout(function () {
+            _dbfWmeTileCacheEndTimer = null;
+            DBF_wmeTileCacheEnd();
+        }, ms == null ? DBF_WME_TILE_CACHE_IDLE_MS : ms);
+    }
+    function DBF_wmeTileCacheGetFeat(key) {
+        if (!_dbfWmeTileCache) return null;
+        var v = _dbfWmeTileCache.features[key];
+        if (!v) return null;
+        var o = _dbfWmeTileCache.order;
+        var ix = o.indexOf(key);
+        if (ix >= 0) o.splice(ix, 1);
+        o.push(key);
+        _dbfWmeTileCache.hits++;
+        return v;
+    }
+    function DBF_wmeTileCacheSetFeat(key, v) {
+        if (!_dbfWmeTileCache) return;
+        if (!_dbfWmeTileCache.features[key]) {
+            _dbfWmeTileCache.order.push(key);
+            while (_dbfWmeTileCache.order.length > DBF_WME_TILE_CACHE_MAX) {
+                var old = _dbfWmeTileCache.order.shift();
+                delete _dbfWmeTileCache.features[old];
+            }
+        } else {
+            var o = _dbfWmeTileCache.order;
+            var ix = o.indexOf(key);
+            if (ix >= 0) { o.splice(ix, 1); o.push(key); }
+        }
+        _dbfWmeTileCache.features[key] = v;
+        _dbfWmeTileCache.misses++;
+    }
+    var _dbfCommuneHudGen = 0;
+    var _dbfCommuneScanGen = 0;
+    var _dbfCommuneHudState = null;
+    var _dbfDeptHudState = null;
+    var _dbfCommuneScanBusy = false;
+
+    function DBF_readCommunePctStore() {
+        try { return JSON.parse(localStorage.getItem(DBF_COMMUNE_PCT_KEY) || '{}'); }
+        catch (e) { return {}; }
+    }
+    function DBF_getStoredCommunePct(code) {
+        var v = DBF_readCommunePctStore()[String(code || '').toUpperCase()];
+        return (typeof v === 'number' && isFinite(v)) ? v : null;
+    }
+    function DBF_setStoredCommunePct(code, pct) {
+        var key = String(code || '').toUpperCase();
+        if (!key || !isFinite(pct)) return;
+        var store = DBF_readCommunePctStore();
+        store[key] = Math.max(0, Math.min(100, Math.round(pct)));
+        try { localStorage.setItem(DBF_COMMUNE_PCT_KEY, JSON.stringify(store)); }
+        catch (e) { if (debug) console.warn('[DBF] commune pct store', e); }
+    }
+    function DBF_progressNormStreet(s) {
+        return String(s || '').toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+    function DBF_progressHnKey(number, street) {
+        var n = String(number == null ? '' : number).toLowerCase().replace(/\s+/g, '');
+        return n + '|' + DBF_progressNormStreet(street);
+    }
+    function DBF_bboxFromGeoApi(bboxField) {
+        if (!bboxField) return null;
+        if (Array.isArray(bboxField) && bboxField.length >= 4 && typeof bboxField[0] === 'number') {
+            return [bboxField[0], bboxField[1], bboxField[2], bboxField[3]];
+        }
+
+        var rings = [];
+        if (bboxField.type === 'Polygon' && bboxField.coordinates) rings = [bboxField.coordinates[0]];
+        else if (bboxField.type === 'MultiPolygon' && bboxField.coordinates) {
+            for (var i = 0; i < bboxField.coordinates.length; i++) rings.push(bboxField.coordinates[i][0]);
+        } else if (bboxField.coordinates && bboxField.coordinates[0]) rings = [bboxField.coordinates[0]];
+        if (!rings.length) return null;
+        var w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+        for (var r = 0; r < rings.length; r++) {
+            for (var p = 0; p < rings[r].length; p++) {
+                var lon = Number(rings[r][p][0]), lat = Number(rings[r][p][1]);
+                if (!isFinite(lon) || !isFinite(lat)) continue;
+                if (lon < w) w = lon; if (lat < s) s = lat;
+                if (lon > e) e = lon; if (lat > n) n = lat;
+            }
+        }
+        return isFinite(w) ? [w, s, e, n] : null;
+    }
+    async function DBF_pageFetchJson(relUrl) {
+        var pw = DBF_pageWindow;
+        if (!pw || typeof pw.fetch !== 'function') throw new Error('fetch page indisponible');
+        var r = await pw.fetch(relUrl, { credentials: 'same-origin' });
+        if (!r.ok) throw new Error('WME HTTP ' + r.status);
+        var txt = await r.text();
+        return JSON.parse(txt);
+    }
+    async function DBF_geoCommuneByCode(codeInsee) {
+        var code = String(codeInsee || '').toUpperCase();
+        var url = GEO_API + '/communes/' + encodeURIComponent(code) + '?fields=nom,code,bbox,contour';
+        var res = await DBF_gmGet(url, 15000);
+        return JSON.parse(res.responseText);
+    }
+    function DBF_parseBalProgressKeys(text) {
+        var keys = Object.create(null);
+        var byStreet = Object.create(null);
+        var total = 0;
+        if (!text) return { total: 0, keys: keys, byStreet: byStreet };
+        var lines = String(text).split(/\r?\n/);
+        if (lines.length < 2) return { total: 0, keys: keys, byStreet: byStreet };
+        var header = lines[0].split(';');
+        var idx = Object.create(null);
+        for (var h = 0; h < header.length; h++) idx[header[h].trim()] = h;
+        function cell(cols, name) {
+            var i = idx[name];
+            return i == null ? '' : String(cols[i] == null ? '' : cols[i]).trim();
+        }
+        for (var li = 1; li < lines.length; li++) {
+            if (!lines[li]) continue;
+            var raw = lines[li], cols;
+            if (raw.charAt(0) === '"') {
+                var endQ = raw.indexOf('";');
+                if (endQ > 0) cols = [raw.slice(1, endQ)].concat(raw.slice(endQ + 2).split(';'));
+                else cols = raw.split(';');
+            } else cols = raw.split(';');
+            var numero = cell(cols, 'numero');
+            if (!numero || numero === '99999') continue;
+            var rep = cell(cols, 'rep');
+            var voie = cell(cols, 'voie_nom') || '(sans nom)';
+            var lon = Number(cell(cols, 'long'));
+            var lat = Number(cell(cols, 'lat'));
+            var k = DBF_progressHnKey(numero + (rep || ''), voie);
+            var sn = DBF_progressNormStreet(voie) || '_';
+            if (!byStreet[sn]) byStreet[sn] = { name: voie, total: 0, lonSum: 0, latSum: 0, nCoord: 0 };
+
+            if (isFinite(lon) && isFinite(lat)) {
+                byStreet[sn].lonSum += lon;
+                byStreet[sn].latSum += lat;
+                byStreet[sn].nCoord++;
+            }
+            if (!keys[k]) {
+                keys[k] = voie;
+                total++;
+                byStreet[sn].total++;
+            }
+        }
+        return { total: total, keys: keys, byStreet: byStreet };
+    }
+    async function DBF_fetchWmeTilesForBbox(bbox, onProg) {
+        var w = bbox[0], s = bbox[1], e = bbox[2], n = bbox[3];
+        var tiles = [];
+        for (var i = Math.floor(w / DBF_WME_CARREAU); i <= Math.floor(e / DBF_WME_CARREAU); i++) {
+            for (var j = Math.floor(s / DBF_WME_CARREAU); j <= Math.floor(n / DBF_WME_CARREAU); j++) {
+                tiles.push([i, j]);
+            }
+        }
+        if (tiles.length > DBF_WME_MAX_TILES) {
+            throw new Error('Zone trop vaste (' + tiles.length + ' carreaux) — zoomez ou choisissez une commune plus petite');
+        }
+        var featUrl = '/row-Descartes/app/Features';
+        var hnUrl = '/row-Descartes/app/HouseNumbers';
+        var segments = Object.create(null);
+        var streets = Object.create(null);
+        var rpps = [];
+        var done = 0;
+        var next = 0;
+        function ingestTile(part) {
+            if (!part) return;
+            (part.segments || []).forEach(function (x) {
+                segments[x.id] = {
+                    id: x.id,
+                    primaryStreetID: x.primaryStreetID,
+                    hasHNs: !!x.hasHNs
+                };
+            });
+            (part.streets || []).forEach(function (x) {
+                streets[x.id] = { id: x.id, name: x.name || '' };
+            });
+            (part.rpps || []).forEach(function (x) {
+                rpps.push({ streetID: x.streetID, houseNumber: x.houseNumber });
+            });
+        }
+        async function worker() {
+            while (next < tiles.length) {
+                var k = next++;
+                var ij = tiles[k];
+                var cacheKey = ij[0] + ':' + ij[1];
+                var cached = DBF_wmeTileCacheGetFeat(cacheKey);
+                if (cached) {
+                    ingestTile(cached);
+                    done++;
+                    if (onProg) onProg('WME ' + done + '/' + tiles.length + ' (cache)', done / tiles.length * 0.7);
+                    continue;
+                }
+                var b = [
+                    ij[0] * DBF_WME_CARREAU,
+                    ij[1] * DBF_WME_CARREAU,
+                    (ij[0] + 1) * DBF_WME_CARREAU,
+                    (ij[1] + 1) * DBF_WME_CARREAU
+                ].map(function (x) { return Number(x.toFixed(6)); }).join(',');
+                var r = await DBF_pageFetchJson(
+                    featUrl + '?bbox=' + b
+                    + '&language=fr&v=2&apiV2=true&zoomLevel=17&roadTypes=' + DBF_WME_ROAD_TYPES
+                    + '&venueLevel=4&venueFilter=1,1,1,1'
+                );
+                if (!r || !r.segments || !Array.isArray(r.segments.objects)) {
+                    throw new Error('Réponse WME Features inattendue');
+                }
+                var part = {
+                    segments: (r.segments.objects || []).map(function (x) {
+                        return {
+                            id: x.id,
+                            primaryStreetID: x.primaryStreetID,
+                            hasHNs: !!x.hasHNs
+                        };
+                    }),
+                    streets: ((r.streets && r.streets.objects) || []).map(function (x) {
+                        return { id: x.id, name: x.name || '' };
+                    }),
+                    rpps: ((r.venues && r.venues.objects) || []).filter(function (x) {
+                        return x && x.residential;
+                    }).map(function (x) {
+                        return { streetID: x.streetID, houseNumber: x.houseNumber };
+                    })
+                };
+                DBF_wmeTileCacheSetFeat(cacheKey, part);
+                ingestTile(part);
+                done++;
+                if (onProg) onProg('WME ' + done + '/' + tiles.length, done / tiles.length * 0.7);
+            }
+        }
+        var workers = [];
+        for (var wI = 0; wI < Math.min(DBF_WME_PARALLEL, tiles.length); wI++) workers.push(worker());
+        await Promise.all(workers);
+
+        var ids = Object.keys(segments).filter(function (id) { return segments[id].hasHNs; });
+        var hns = [];
+        var needIds = [];
+        for (var hi = 0; hi < ids.length; hi++) {
+            var sid = ids[hi];
+            if (_dbfWmeTileCache && _dbfWmeTileCache.hnBySeg[sid]) {
+                var cachedHn = _dbfWmeTileCache.hnBySeg[sid];
+                for (var ch = 0; ch < cachedHn.length; ch++) hns.push(cachedHn[ch]);
+            } else {
+                needIds.push(sid);
+            }
+        }
+        for (var off = 0; off < needIds.length; off += 100) {
+            var lot = needIds.slice(off, off + 100);
+            var hr = await DBF_pageFetchJson(hnUrl + '?ids=' + lot.join(','));
+            if (!hr || !hr.segmentHouseNumbers || !Array.isArray(hr.segmentHouseNumbers.objects)) {
+                throw new Error('Réponse WME HouseNumbers inattendue');
+            }
+            var bySeg = Object.create(null);
+            (hr.segmentHouseNumbers.objects || []).forEach(function (h) {
+                var row = { segID: h.segID, number: h.number };
+                hns.push(row);
+                var kSeg = String(h.segID);
+                if (!bySeg[kSeg]) bySeg[kSeg] = [];
+                bySeg[kSeg].push(row);
+            });
+            if (_dbfWmeTileCache) {
+                lot.forEach(function (id) {
+                    _dbfWmeTileCache.hnBySeg[id] = bySeg[String(id)] || [];
+                });
+            }
+            if (onProg) {
+                onProg('HN ' + Math.min(off + 100, needIds.length) + '/' + needIds.length,
+                    0.7 + 0.25 * Math.min(off + 100, needIds.length) / Math.max(needIds.length, 1));
+            }
+        }
+        if (!needIds.length && onProg) onProg('HN (cache)', 0.95);
+        return { segments: segments, streets: streets, hns: hns, rpps: rpps, tiles: tiles.length };
+    }
+    async function DBF_scanCommuneProgress(codeInsee, opts) {
+        opts = opts || {};
+        var code = String(codeInsee || '').toUpperCase();
+        if (!code) throw new Error('Code INSEE manquant');
+
+        var gen = (opts.reuseGen != null) ? opts.reuseGen : (++_dbfCommuneScanGen);
+        function alive() { return gen === _dbfCommuneScanGen; }
+        function prog(msg, frac) {
+            if (opts.onProgress) opts.onProgress(msg, frac);
+        }
+
+        DBF_wmeTileCacheBegin();
+
+        try {
+            prog('Commune…', 0.02);
+            var com = await DBF_geoCommuneByCode(code);
+            if (!alive()) return null;
+            var name = (com && com.nom) || code;
+            var bbox = DBF_bboxFromGeoApi(com && (com.bbox || com.contour));
+            if (!bbox) throw new Error('Emprise commune introuvable');
+
+            var M = 0.003;
+            bbox = [bbox[0] - M, bbox[1] - M, bbox[2] + M, bbox[3] + M];
+
+            prog('BAN…', 0.05);
+            var balUrl = BAN_BAL_BASE + '/' + encodeURIComponent(code) + '/download/csv-bal/adresses';
+            var balRes = await DBF_gmGet(balUrl, 120000, 2);
+            if (!alive()) return null;
+            var ban = DBF_parseBalProgressKeys(balRes.responseText);
+            var total = ban.total;
+            if (!total) {
+                var look = await DBF_banLookup(code);
+                total = look && Number(look.nbNumeros);
+            }
+            if (!total) throw new Error('Aucune adresse BAN pour cette commune');
+
+            prog('WME…', 0.15);
+            var wme = await DBF_fetchWmeTilesForBbox(bbox, function (m, f) {
+                if (!alive()) return;
+                prog(m, 0.15 + 0.75 * (f || 0));
+            });
+            if (!alive()) return null;
+
+            prog('Calcul…', 0.95);
+            var present = 0;
+            var matched = Object.create(null);
+            var streetPresent = Object.create(null);
+            function tryMatch(number, streetId) {
+                var st = streetsName(streetId);
+                if (!st || number == null || number === '') return;
+                var k = DBF_progressHnKey(number, st);
+                var voieBan = ban.keys[k];
+                if (voieBan && !matched[k]) {
+                    matched[k] = 1;
+                    present++;
+                    var sn = DBF_progressNormStreet(voieBan) || '_';
+                    streetPresent[sn] = (streetPresent[sn] || 0) + 1;
+                }
+            }
+            function streetsName(id) {
+                var s = wme.streets[id];
+                return s ? s.name : '';
+            }
+            for (var hi = 0; hi < wme.hns.length; hi++) {
+                var h = wme.hns[hi];
+                var seg = wme.segments[h.segID];
+                tryMatch(h.number, seg && seg.primaryStreetID);
+            }
+            for (var ri = 0; ri < wme.rpps.length; ri++) {
+                tryMatch(wme.rpps[ri].houseNumber, wme.rpps[ri].streetID);
+            }
+
+            var streetsRank = [];
+            Object.keys(ban.byStreet || {}).forEach(function (sn) {
+                var row = ban.byStreet[sn];
+                var got = streetPresent[sn] || 0;
+                var tot = row.total || 0;
+                if (!tot) return;
+                var entry = {
+                    name: row.name,
+                    present: got,
+                    total: tot,
+                    missing: tot - got,
+                    pct: Math.round((got / tot) * 100),
+                    lon: null,
+                    lat: null
+                };
+                if (row.nCoord > 0) {
+                    entry.lon = row.lonSum / row.nCoord;
+                    entry.lat = row.latSum / row.nCoord;
+                }
+                streetsRank.push(entry);
+            });
+
+            streetsRank.sort(function (a, b) {
+                if (a.pct !== b.pct) return a.pct - b.pct;
+                if (a.missing !== b.missing) return b.missing - a.missing;
+                return String(a.name).localeCompare(String(b.name), 'fr');
+            });
+
+            var pct = Math.round((present / total) * 100);
+            DBF_setStoredCommunePct(code, pct);
+            return {
+                code: code,
+                name: name,
+                present: present,
+                total: total,
+                pct: pct,
+                tiles: wme.tiles,
+                streets: streetsRank,
+                estimated: false
+            };
+        } finally {
+
+            if (opts.reuseGen == null) {
+                DBF_wmeTileCacheScheduleEnd();
+            }
+        }
+    }
+    function DBF_focusCommuneStreet(street) {
+        if (!street) return;
+        var lon = Number(street.lon);
+        var lat = Number(street.lat);
+        if (!isFinite(lon) || !isFinite(lat)) {
+            DBF_notify('Position inconnue pour « ' + (street.name || 'cette rue') + ' »');
+            return;
+        }
+        var z = DBF_getZoom();
+        DBF_setMapCenter(lon, lat, z >= 18 ? z : 18);
+        DBF_notify(street.name || 'Rue');
+    }
+    var _dbfStatsRankItems = null;
+    var _dbfStatsRankKind = 'street';
+
+    function DBF_statsFilterQuery() {
+        var inp = getId('dbfStatsFilter');
+        return inp ? String(inp.value || '').trim().toLowerCase() : '';
+    }
+    function DBF_pctColor(pct) {
+        if (pct == null) return '#78909c';
+        if (pct >= 80) return '#2e7d32';
+        if (pct >= 40) return '#ef6c00';
+        return '#c62828';
+    }
+    function DBF_renderStatsRankList(items, kind) {
+        var box = getId('dbfCommuneStreetRank');
+        var head = getId('dbfStatsRankHead');
+        if (!box) return;
+        _dbfStatsRankItems = items || null;
+        _dbfStatsRankKind = kind || 'street';
+        if (!items || !items.length) {
+            box.style.display = 'none';
+            box.innerHTML = '';
+            if (head) { head.style.display = 'none'; head.textContent = ''; }
+            return;
+        }
+        var q = DBF_statsFilterQuery();
+        var shown = [];
+        for (var i = 0; i < items.length; i++) {
+            var it = items[i];
+            if (q && String(it.name || '').toLowerCase().indexOf(q) === -1) continue;
+            shown.push({ item: it, idx: i });
+        }
+        var label = kind === 'dept' ? 'départements' : (kind === 'city' ? 'villes' : 'rues');
+        if (head) {
+            head.style.display = 'block';
+            head.textContent = 'Classement des ' + label + ' (moins → plus avancées) · '
+                + shown.length + ' / ' + items.length + ' · clic = focus';
+        }
+        box.style.display = 'block';
+        var html = '<div class="dbf-stats-rank-box">';
+        if (!shown.length) {
+            html += '<div class="dbf-stats-rank-row"><span class="dbf-stats-name">Aucun résultat pour ce filtre</span></div>';
+        }
+        for (var j = 0; j < shown.length; j++) {
+            var s = shown[j].item;
+            var hasPct = s.pct != null;
+            var canFocus = isFinite(Number(s.lon)) && isFinite(Number(s.lat));
+            var pctTxt = hasPct ? (s.pct + '%') : '—';
+            var cntTxt = (s.present == null ? '…' : s.present) + '/' + (s.total == null ? '…' : s.total);
+            html += '<div class="dbf-stats-rank-row' + (canFocus ? ' is-clickable' : '') + '" data-i="' + shown[j].idx + '"'
+                + ' title="' + (canFocus ? 'Centrer la carte' : 'Position inconnue') + '">'
+                + '<span class="dbf-stats-name">' + String(s.name || '').replace(/</g, '&lt;') + '</span>'
+                + '<span class="dbf-stats-cnt">' + cntTxt + '</span>'
+                + '<span class="dbf-stats-pct" style="color:' + DBF_pctColor(hasPct ? s.pct : null) + ';">' + pctTxt + '</span>'
+                + '</div>';
+        }
+        html += '</div>';
+        box.innerHTML = html;
+        box.querySelectorAll('.dbf-stats-rank-row[data-i]').forEach(function (row) {
+            row.addEventListener('click', function () {
+                var idx = Number(row.getAttribute('data-i'));
+                var hit = items[idx];
+                if (!hit) return;
+                if (kind === 'city' || kind === 'dept') {
+                    var lon = Number(hit.lon), lat = Number(hit.lat);
+                    if (!isFinite(lon) || !isFinite(lat)) {
+                        DBF_notify('Position inconnue pour « ' + (hit.name || 'cet élément') + ' »');
+                        return;
+                    }
+                    var z = DBF_getZoom();
+                    var zMin = (kind === 'dept') ? 9 : 14;
+                    DBF_setMapCenter(lon, lat, z >= zMin ? z : zMin);
+                    DBF_notify(hit.name || (kind === 'dept' ? 'Département' : 'Ville'));
+                } else {
+                    DBF_focusCommuneStreet(hit);
+                }
+            });
+        });
+    }
+    function DBF_renderCommuneStreetRank(streets) {
+        DBF_renderStatsRankList(streets, 'street');
+    }
+    function DBF_setProgressModeButtons() {
+        var bC = getId('dbfProgressModeCommune');
+        var bD = getId('dbfProgressModeDept');
+        if (bC) bC.classList.toggle('is-on', _dbfProgressMode === 'commune');
+        if (bD) bD.classList.toggle('is-on', _dbfProgressMode === 'dept');
+        var scope = getId('dbfProgressScopeLabel');
+        if (scope) {
+            scope.textContent = (_dbfProgressMode === 'dept' ? 'dans le département' : 'dans la commune');
+        }
+    }
+    function DBF_deptCodeFromInsee(code) {
+        var c = String(code || '').toUpperCase();
+        if (/^(97|98)/.test(c)) return c.slice(0, 3);
+        if (/^2[AB]/.test(c)) return c.slice(0, 2);
+        return c.slice(0, 2);
+    }
+    function DBF_geoCentreLonLat(centre) {
+        if (!centre) return { lon: null, lat: null };
+        if (centre.type === 'Point' && centre.coordinates) {
+            return { lon: Number(centre.coordinates[0]), lat: Number(centre.coordinates[1]) };
+        }
+        if (typeof centre.lon === 'number' && typeof centre.lat === 'number') {
+            return { lon: centre.lon, lat: centre.lat };
+        }
+        return { lon: null, lat: null };
+    }
+    function DBF_sortProgressRank(a, b) {
+        var aPct = (a.pct == null) ? 101 : a.pct;
+        var bPct = (b.pct == null) ? 101 : b.pct;
+        if (aPct !== bPct) return aPct - bPct;
+        var aMiss = (a.missing == null) ? -1 : a.missing;
+        var bMiss = (b.missing == null) ? -1 : b.missing;
+        if (aMiss !== bMiss) return bMiss - aMiss;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'fr');
+    }
+    function DBF_renderDeptCityRank(cities) {
+        DBF_renderStatsRankList(cities, 'city');
+    }
+    function DBF_updateCommuneWmeHud(info) {
+        var hud = getId('dbfCommuneCertHud');
+        var nameEl = getId('dbfCommuneCertName');
+        var presentEl = getId('dbfCommunePresent');
+        var totalEl = getId('dbfCommuneTotal');
+        var pctEl = getId('dbfCommuneCertPct');
+        var hintEl = getId('dbfCommuneHudHint');
+        var btn = getId('dbfCommuneScanBtn');
+        if (!hud) return;
+        DBF_setProgressModeButtons();
+        if (!info || !info.name) {
+            hud.style.display = 'none';
+            if (_dbfProgressMode === 'dept') {
+                _dbfDeptHudState = null;
+                DBF_renderDeptCityRank(null);
+            } else {
+                _dbfCommuneHudState = null;
+                DBF_renderCommuneStreetRank(null);
+            }
+            return;
+        }
+        if (_dbfProgressMode === 'dept') {
+            if (!info.cities && _dbfDeptHudState && _dbfDeptHudState.code === info.code) {
+                info.cities = _dbfDeptHudState.cities;
+            }
+            _dbfDeptHudState = info;
+        } else {
+            if (!info.streets && _dbfCommuneHudState && _dbfCommuneHudState.code === info.code) {
+                info.streets = _dbfCommuneHudState.streets;
+            }
+            _dbfCommuneHudState = info;
+        }
+        hud.style.display = 'block';
+        if (nameEl) {
+            nameEl.textContent = info.name
+                + (info.code && _dbfProgressMode === 'dept' ? ' (' + info.code + ')' : '');
+        }
+        if (presentEl) presentEl.textContent = (info.present == null ? '…' : String(info.present));
+        if (totalEl) totalEl.textContent = (info.total == null ? '…' : String(info.total));
+        if (pctEl) pctEl.textContent = (info.pct == null ? '…' : String(info.pct));
+        if (hintEl) {
+            if (info.scanning) hintEl.textContent = info.scanMsg || 'Analyse en cours (carte immobile)…';
+            else if (_dbfProgressMode === 'dept') {
+                hintEl.textContent = info.estimated
+                    ? '% mémorisés par ville + totaux BAN — Analyser pour calculer les absents WME (sans bouger la carte)'
+                    : 'Présents WME / total BAN · villes classées moins → plus avancées · stock = % par commune';
+            } else if (info.estimated) {
+                hintEl.textContent = 'Pourcentage mémorisé — cliquez Actualiser pour le détail par rue (sans bouger la carte)';
+            } else {
+                hintEl.textContent = 'Présents WME / total BAN · rues classées moins → plus avancées · stock commune = % seul';
+            }
+        }
+        if (btn) {
+            btn.disabled = !!info.scanning || _dbfCommuneScanBusy;
+            if (info.scanning) btn.textContent = 'Analyse…';
+            else if (_dbfProgressMode === 'dept') btn.textContent = 'Analyser le département';
+            else btn.textContent = 'Actualiser la progression';
+        }
+        if (_dbfProgressMode === 'dept') {
+            if (info.cities) DBF_renderDeptCityRank(info.cities);
+            else if (!info.scanning) DBF_renderDeptCityRank(null);
+        } else if (!info.scanning) {
+            DBF_renderCommuneStreetRank(info.streets);
+        }
+    }
+    async function DBF_geoDepartement(code) {
+        var c = String(code || '').toUpperCase();
+        if (!c) return null;
+        var url = GEO_API + '/departements/' + encodeURIComponent(c) + '?fields=nom,code';
+        var res = await DBF_gmGet(url, 15000);
+        return JSON.parse(res.responseText);
+    }
+    async function DBF_geoCommuneCentre(codeInsee) {
+        var c = String(codeInsee || '').toUpperCase();
+        if (!c) return null;
+        var url = GEO_API + '/communes/' + encodeURIComponent(c) + '?fields=nom,code,centre';
+        var res = await DBF_gmGet(url, 15000);
+        return JSON.parse(res.responseText);
+    }
+    async function DBF_geoCommunesOfDept(deptCode) {
+        var c = String(deptCode || '').toUpperCase();
+        var url = GEO_API + '/departements/' + encodeURIComponent(c)
+            + '/communes?fields=nom,code,centre,population';
+        var res = await DBF_gmGet(url, 30000);
+        var list = JSON.parse(res.responseText);
+        return Array.isArray(list) ? list : [];
+    }
+    async function DBF_buildDeptCityRankQuick(deptCode, opts) {
+        opts = opts || {};
+        var code = String(deptCode || '').toUpperCase();
+        var gen = opts.gen != null ? opts.gen : _dbfCommuneHudGen;
+        function alive() {
+            if (typeof opts.aliveFn === 'function') return !!opts.aliveFn();
+            return gen === _dbfCommuneHudGen;
+        }
+        var dep = await DBF_geoDepartement(code);
+        if (!alive()) return null;
+        var name = (dep && dep.nom) || code;
+        var communes = await DBF_geoCommunesOfDept(code);
+        if (!alive()) return null;
+        var cities = new Array(communes.length);
+        var next = 0;
+        async function worker() {
+            while (next < communes.length) {
+                if (!alive()) return;
+                var i = next++;
+                var com = communes[i];
+                var insee = String(com.code || '').toUpperCase();
+                var centre = DBF_geoCentreLonLat(com.centre);
+                var total = null;
+                try {
+                    var look = await DBF_banLookup(insee);
+                    if (look && isFinite(Number(look.nbNumeros))) total = Number(look.nbNumeros);
+                } catch (eL) {  }
+                if (!alive()) return;
+                var pct = DBF_getStoredCommunePct(insee);
+                var present = (pct != null && total) ? Math.round((pct / 100) * total) : null;
+                cities[i] = {
+                    code: insee,
+                    name: com.nom || insee,
+                    present: present,
+                    total: total,
+                    missing: (present != null && total != null) ? (total - present) : null,
+                    pct: pct,
+                    lon: centre.lon,
+                    lat: centre.lat,
+                    estimated: pct != null
+                };
+                if (opts.onProgress && (i % 8 === 0 || i === communes.length - 1)) {
+                    opts.onProgress('Lookup BAN ' + (i + 1) + '/' + communes.length, cities.filter(Boolean));
+                }
+            }
+        }
+        var workers = [];
+        for (var w = 0; w < Math.min(DBF_DEPT_LOOKUP_PARALLEL, communes.length); w++) workers.push(worker());
+        await Promise.all(workers);
+        if (!alive()) return null;
+        cities = cities.filter(Boolean);
+        cities.sort(DBF_sortProgressRank);
+        var presentSum = 0, totalSum = 0, knownPresent = 0, knownTotal = 0;
+        for (var k = 0; k < cities.length; k++) {
+            if (cities[k].total != null) { totalSum += cities[k].total; knownTotal++; }
+            if (cities[k].present != null) { presentSum += cities[k].present; knownPresent++; }
+        }
+        var pct = (knownPresent && totalSum) ? Math.round((presentSum / totalSum) * 100) : null;
+        return {
+            code: code,
+            name: name,
+            present: knownPresent ? presentSum : null,
+            total: knownTotal ? totalSum : null,
+            pct: pct,
+            cities: cities,
+            estimated: true,
+            cityCount: cities.length,
+            scannedCities: knownPresent
+        };
+    }
+    async function DBF_scanDeptProgress(deptCode, opts) {
+        opts = opts || {};
+        var code = String(deptCode || '').toUpperCase();
+        var gen = (opts.reuseGen != null) ? opts.reuseGen : (++_dbfCommuneScanGen);
+        function alive() { return gen === _dbfCommuneScanGen; }
+        var skipStored = !!opts.skipStored;
+
+        var ownCache = !_dbfWmeTileCache;
+        DBF_wmeTileCacheCancelEnd();
+        if (ownCache) DBF_wmeTileCacheBegin();
+        try {
+            var quick = await DBF_buildDeptCityRankQuick(code, {
+                aliveFn: alive,
+                onProgress: function (msg, cities) {
+                    if (!alive()) return;
+                    if (opts.onProgress) opts.onProgress(msg, { cities: cities });
+                }
+            });
+            if (!alive() || !quick) return null;
+            var cities = quick.cities.slice();
+            for (var i = 0; i < cities.length; i++) {
+                if (!alive()) return null;
+                var city = cities[i];
+                if (skipStored && DBF_getStoredCommunePct(city.code) != null) continue;
+                if (opts.onProgress) {
+                    opts.onProgress('Ville ' + (i + 1) + '/' + cities.length + ' — ' + city.name, {
+                        cities: cities.slice().sort(DBF_sortProgressRank)
+                    });
+                }
+                try {
+                    var res = await DBF_scanCommuneProgress(city.code, {
+                        reuseGen: gen,
+                        onProgress: function (msg) {
+                            if (!alive()) return;
+                            if (opts.onProgress) {
+                                opts.onProgress('Ville ' + (i + 1) + '/' + cities.length + ' — ' + city.name + ' · ' + msg, {
+                                    cities: cities.slice().sort(DBF_sortProgressRank)
+                                });
+                            }
+                        }
+                    });
+                    if (!alive()) return null;
+                    if (!res) continue;
+                    cities[i] = {
+                        code: city.code,
+                        name: res.name || city.name,
+                        present: res.present,
+                        total: res.total,
+                        missing: res.total - res.present,
+                        pct: res.pct,
+                        lon: city.lon,
+                        lat: city.lat,
+                        estimated: false
+                    };
+                } catch (eCity) {
+                    if (debug) console.warn('[DBF] dept city scan', city.code, eCity);
+                }
+                if (opts.onProgress) {
+                    opts.onProgress('Ville ' + (i + 1) + '/' + cities.length + ' OK', {
+                        cities: cities.slice().sort(DBF_sortProgressRank)
+                    });
+                }
+            }
+            if (!alive()) return null;
+            cities.sort(DBF_sortProgressRank);
+            var presentSum = 0, totalSum = 0;
+            for (var j = 0; j < cities.length; j++) {
+                if (cities[j].present != null) presentSum += cities[j].present;
+                if (cities[j].total != null) totalSum += cities[j].total;
+            }
+            return {
+                code: code,
+                name: quick.name,
+                present: presentSum,
+                total: totalSum,
+                pct: totalSum ? Math.round((presentSum / totalSum) * 100) : null,
+                cities: cities,
+                estimated: false,
+                cityCount: cities.length
+            };
+        } finally {
+            if (ownCache) DBF_wmeTileCacheEnd();
+        }
+    }
+    async function DBF_refreshCommuneCertHud() {
+        var gen = ++_dbfCommuneHudGen;
+        var c = _dbfCenter;
+        try {
+            if (!c || !isFinite(c.lon) || !isFinite(c.lat)) {
+                DBF_updateCommuneWmeHud(null);
+                return;
+            }
+            var commune = await DBF_geoInseeAtPoint(c.lon, c.lat);
+            if (gen !== _dbfCommuneHudGen) return;
+            if (!commune || !commune.code) {
+                DBF_updateCommuneWmeHud(null);
+                return;
+            }
+            if (_dbfProgressMode === 'dept') {
+                var depCode = commune.codeDepartement
+                    || (commune.departement && commune.departement.code)
+                    || String(commune.code).slice(0, 2);
+
+                if (/^(97|98)/.test(String(commune.code))) depCode = String(commune.code).slice(0, 3);
+                else if (/^2[AB]/i.test(String(commune.code))) depCode = String(commune.code).slice(0, 2).toUpperCase();
+                DBF_updateCommuneWmeHud({
+                    code: depCode,
+                    name: 'Département ' + depCode,
+                    present: null, total: null, pct: null,
+                    scanning: true, scanMsg: 'Chargement des villes…'
+                });
+                var quick = await DBF_buildDeptCityRankQuick(depCode, { gen: gen });
+                if (gen !== _dbfCommuneHudGen) return;
+                if (!quick) {
+                    DBF_updateCommuneWmeHud(null);
+                    return;
+                }
+                DBF_updateCommuneWmeHud(quick);
+                return;
+            }
+            var name = commune.nom || commune.code;
+            var code = commune.code;
+            var look = null;
+            try { look = await DBF_banLookup(code); } catch (eL) {  }
+            if (gen !== _dbfCommuneHudGen) return;
+            var total = look && Number(look.nbNumeros);
+            var pct = DBF_getStoredCommunePct(code);
+            var present = (pct != null && total) ? Math.round((pct / 100) * total) : null;
+            DBF_updateCommuneWmeHud({
+                code: code,
+                name: name,
+                present: present,
+                total: isFinite(total) ? total : null,
+                pct: pct,
+                estimated: pct != null
+            });
+        } catch (e) {
+            if (gen !== _dbfCommuneHudGen) return;
+            if (debug) console.warn('[DBF] commune hud', e);
+        }
+    }
+    async function DBF_runCommuneProgressScan() {
+        if (_dbfCommuneScanBusy) return;
+        if (_dbfProgressMode === 'dept') {
+            await DBF_runDeptProgressScan();
+            return;
+        }
+        var st = _dbfCommuneHudState;
+        if (!st || !st.code) {
+            DBF_notify('Placez d’abord le centre de la carte sur une commune.');
+            return;
+        }
+        _dbfCommuneScanBusy = true;
+        var code = st.code;
+        var name = st.name;
+        DBF_updateCommuneWmeHud({
+            code: code, name: name,
+            present: st.present, total: st.total, pct: st.pct,
+            scanning: true, scanMsg: 'Démarrage…'
+        });
+        try {
+            var res = await DBF_scanCommuneProgress(code, {
+                onProgress: function (msg) {
+                    DBF_updateCommuneWmeHud({
+                        code: code, name: name,
+                        present: st.present, total: st.total, pct: st.pct,
+                        scanning: true, scanMsg: msg
+                    });
+                }
+            });
+            if (!res) return;
+            DBF_updateCommuneWmeHud(res);
+            DBF_notify(res.name + ' : ' + res.present + ' / ' + res.total + ' (' + res.pct + '%)');
+        } catch (e) {
+            DBF_updateCommuneWmeHud({
+                code: code, name: name,
+                present: st.present, total: st.total, pct: st.pct,
+                estimated: true
+            });
+            DBF_notify(e && e.message ? e.message : 'Échec analyse progression');
+            if (debug) console.warn('[DBF] commune scan', e);
+        } finally {
+            _dbfCommuneScanBusy = false;
+            var btn = getId('dbfCommuneScanBtn');
+            if (btn && _dbfCommuneHudState && !_dbfCommuneHudState.scanning) {
+                btn.disabled = false;
+                btn.textContent = 'Actualiser la progression';
+            }
+        }
+    }
+    async function DBF_runDeptProgressScan() {
+        if (_dbfCommuneScanBusy) return;
+        var st = _dbfDeptHudState;
+        if (!st || !st.code) {
+            DBF_notify('Placez d’abord le centre de la carte sur un département.');
+            return;
+        }
+        var nCities = (st.cities && st.cities.length) || st.cityCount || 0;
+        if (nCities > 40) {
+            if (!confirm('Analyser ' + nCities + ' communes du ' + (st.name || st.code)
+                + ' ?\nCela peut prendre plusieurs minutes (carte immobile, % stockés au fil de l’eau).')) {
+                return;
+            }
+        }
+        _dbfCommuneScanBusy = true;
+        var code = st.code;
+        var name = st.name;
+        DBF_updateCommuneWmeHud({
+            code: code, name: name,
+            present: st.present, total: st.total, pct: st.pct,
+            cities: st.cities,
+            scanning: true, scanMsg: 'Démarrage département…'
+        });
+        try {
+            var res = await DBF_scanDeptProgress(code, {
+                onProgress: function (msg, partial) {
+                    var cities = (partial && partial.cities) || st.cities;
+                    var pSum = 0, tSum = 0, nP = 0;
+                    if (cities) {
+                        for (var ci = 0; ci < cities.length; ci++) {
+                            if (cities[ci].total != null) tSum += cities[ci].total;
+                            if (cities[ci].present != null) { pSum += cities[ci].present; nP++; }
+                        }
+                    }
+                    DBF_updateCommuneWmeHud({
+                        code: code, name: name,
+                        present: nP ? pSum : st.present,
+                        total: tSum || st.total,
+                        pct: (nP && tSum) ? Math.round((pSum / tSum) * 100) : st.pct,
+                        cities: cities,
+                        scanning: true, scanMsg: msg
+                    });
+                }
+            });
+            if (!res) return;
+            DBF_updateCommuneWmeHud(res);
+            DBF_notify(res.name + ' : ' + res.present + ' / ' + res.total + ' (' + res.pct + '%) · '
+                + (res.cityCount || 0) + ' villes');
+        } catch (e) {
+            DBF_updateCommuneWmeHud({
+                code: code, name: name,
+                present: st.present, total: st.total, pct: st.pct,
+                cities: st.cities,
+                estimated: true
+            });
+            DBF_notify(e && e.message ? e.message : 'Échec analyse département');
+            if (debug) console.warn('[DBF] dept scan', e);
+        } finally {
+            _dbfCommuneScanBusy = false;
+            var btn = getId('dbfCommuneScanBtn');
+            if (btn && _dbfDeptHudState && !_dbfDeptHudState.scanning) {
+                btn.disabled = false;
+                btn.textContent = 'Analyser le département';
+            }
+        }
+    }
+    function DBF_wireCommuneProgressHud() {
+        var btn = getId('dbfCommuneScanBtn');
+        if (btn && !btn._dbfWired) {
+            btn._dbfWired = true;
+            btn.addEventListener('click', function () {
+                DBF_runCommuneProgressScan().catch(function () {  });
+            });
+        }
+        function switchProgressMode(mode) {
+            if (_dbfProgressMode === mode) return;
+            if (_dbfCommuneScanBusy) {
+                DBF_notify('Analyse en cours — attendez la fin avant de changer de mode.');
+                return;
+            }
+            _dbfProgressMode = mode;
+            var filt = getId('dbfStatsFilter');
+            if (filt) filt.value = '';
+            DBF_setProgressModeButtons();
+            DBF_refreshCommuneCertHud().catch(function () {  });
+        }
+        var bC = getId('dbfProgressModeCommune');
+        var bD = getId('dbfProgressModeDept');
+        if (bC && !bC._dbfWired) {
+            bC._dbfWired = true;
+            bC.addEventListener('click', function () { switchProgressMode('commune'); });
+        }
+        if (bD && !bD._dbfWired) {
+            bD._dbfWired = true;
+            bD.addEventListener('click', function () { switchProgressMode('dept'); });
+        }
+        var filterInp = getId('dbfStatsFilter');
+        if (filterInp && !filterInp._dbfWired) {
+            filterInp._dbfWired = true;
+            filterInp.addEventListener('input', function () {
+                if (!_dbfStatsRankItems) return;
+                DBF_renderStatsRankList(_dbfStatsRankItems, _dbfStatsRankKind);
+            });
+        }
+        DBF_setProgressModeButtons();
+    }
+    async function DBF_prefetchCommunePcts(codes) {
+
+        DBF_refreshCommuneCertHud().catch(function () {  });
+    }
+    const debounced_commune_cert_hud = DBF_debounce(function () {
+        DBF_refreshCommuneCertHud().catch(function () {  });
+    }, 450);
+
     async function DBF_geoInseeByName(nom) {
         var key = String(nom || '').toLowerCase().trim();
         if (!key) return null;
@@ -811,7 +1909,7 @@
     async function DBF_geoInseeAtPoint(lon, lat) {
         var url = GEO_API + '/communes?lon=' + encodeURIComponent(Number(lon).toFixed(3))
             + '&lat=' + encodeURIComponent(Number(lat).toFixed(3))
-            + '&fields=nom,code';
+            + '&fields=nom,code,codeDepartement,departement';
         var res = await DBF_gmGet(url, 15000);
         var list = JSON.parse(res.responseText);
         return Array.isArray(list) && list[0] ? list[0] : null;
@@ -1457,72 +2555,332 @@
     var DBF_shortcutHouseOk = false;
     var DBF_shortcutAddressOk = false;
     var _dbfAutofillLockUntil = 0;
+    var _dbfShortcutsRegistered = false;
+    var _dbfShortcutCapturing = false;
 
-    function DBF_keysAlreadyTaken(keys) {
-        if (!keys || !wmeSDK || !wmeSDK.Shortcuts) return false;
-        try {
-            if (typeof wmeSDK.Shortcuts.areShortcutKeysInUse === "function") {
-                return !!wmeSDK.Shortcuts.areShortcutKeysInUse({ shortcutKeys: keys });
+    var DBF_SHORTCUT_DEFS = [
+        {
+            id: "ban_autofill",
+            defaultKeys: "C+m",
+            label: "Autofill BAN n°",
+            hint: "Souris sur le point BAN, puis le raccourci (dès L2)",
+            description: "Autofill BAN n° (dès L2) : raccourci avec la souris sur le point du numéro souhaité",
+            run: function () { return DBF_fireShortcut("ban_autofill", DBF_autofillHouseNumber); }
+        },
+        {
+            id: "ban_switch",
+            defaultKeys: "C+b",
+            label: "Calque BAN on/off",
+            hint: "Active ou désactive le calque BAN",
+            description: "Activer/Désactiver le calque BAN",
+            run: function () {
+                return DBF_fireShortcut("ban_switch", function () {
+                    DBF_toggleBanFromPanel();
+                    return true;
+                });
             }
-        } catch (e) { }
+        },
+        {
+            id: "ban_zoom_level",
+            defaultKeys: "A+a",
+            label: "Zoom niveau 19",
+            hint: "Défaut : Alt+A",
+            description: "Zoom niveau 19",
+            run: function () {
+                return DBF_fireShortcut("ban_zoom_level", function () {
+                    DBF_setZoomLevel(19);
+                    return true;
+                });
+            }
+        }
+
+    ];
+
+    function DBF_normalizeShortcutKeys(keys) {
+        if (keys == null || keys === '') return null;
+        var s = String(keys).trim();
+        if (!s) return null;
+
+        if (/^A\+97$/i.test(s)) return 'A+a';
+        var p = DBF_parseShortcutKeys(s);
+        if (!p) return null;
+        var mods = '';
+        if (p.alt) mods += 'A';
+        if (p.ctrl) mods += 'C';
+        if (p.shift) mods += 'S';
+        var keyPart = (p.key != null) ? p.key : String(p.code);
+        return mods ? (mods + '+' + keyPart) : keyPart;
+    }
+
+    function DBF_ensureShortcutDefaultsPersisted() {
+        try {
+            var a = JSON.parse(localStorage.DBFsettings || '{}');
+            var saved = a.shortcuts;
+            var changed = false;
+            if (!saved || typeof saved !== 'object') {
+                a.shortcuts = {};
+                DBF_SHORTCUT_DEFS.forEach(function (d) {
+                    a.shortcuts[d.id] = d.defaultKeys;
+                });
+                changed = true;
+            } else {
+                var knownCount = 0;
+                var boundCount = 0;
+                DBF_SHORTCUT_DEFS.forEach(function (d) {
+                    if (!Object.prototype.hasOwnProperty.call(saved, d.id)) {
+                        saved[d.id] = d.defaultKeys;
+                        changed = true;
+                        boundCount++;
+                        return;
+                    }
+                    knownCount++;
+                    if (saved[d.id] != null && saved[d.id] !== '') {
+                        boundCount++;
+                        var norm = DBF_normalizeShortcutKeys(saved[d.id]);
+                        if (norm && norm !== saved[d.id]) {
+                            saved[d.id] = norm;
+                            changed = true;
+                        }
+                    }
+                });
+
+                if (knownCount === DBF_SHORTCUT_DEFS.length && boundCount === 0) {
+                    DBF_SHORTCUT_DEFS.forEach(function (d) {
+                        saved[d.id] = d.defaultKeys;
+                    });
+                    changed = true;
+                }
+                a.shortcuts = saved;
+            }
+            if (changed) localStorage.setItem('DBFsettings', JSON.stringify(a));
+        } catch (e) {  }
+    }
+
+    function DBF_readShortcutMap() {
+        var map = Object.create(null);
+        DBF_SHORTCUT_DEFS.forEach(function (d) { map[d.id] = d.defaultKeys; });
+        try {
+            var a = JSON.parse(localStorage.DBFsettings || '{}');
+            var saved = a && a.shortcuts;
+            if (saved && typeof saved === 'object') {
+                DBF_SHORTCUT_DEFS.forEach(function (d) {
+                    if (Object.prototype.hasOwnProperty.call(saved, d.id)) {
+                        var v = saved[d.id];
+                        map[d.id] = (v == null || v === '') ? null : DBF_normalizeShortcutKeys(String(v));
+                    }
+                });
+            }
+        } catch (e) {  }
+        return map;
+    }
+
+    function DBF_writeShortcutMap(map) {
+        try {
+            var a = JSON.parse(localStorage.DBFsettings || '{}');
+            a.shortcuts = a.shortcuts || {};
+            DBF_SHORTCUT_DEFS.forEach(function (d) {
+                var v = map[d.id];
+                a.shortcuts[d.id] = (v == null || v === '') ? null : DBF_normalizeShortcutKeys(String(v));
+            });
+            localStorage.setItem('DBFsettings', JSON.stringify(a));
+        } catch (e) {
+            if (debug) console.warn('[DBF] save shortcuts', e);
+        }
+    }
+
+    function DBF_parseShortcutKeys(spec) {
+        if (spec == null || spec === '') return null;
+        var s = String(spec).trim();
+        if (!s) return null;
+        var parts = s.split('+');
+        var keyPart = parts[parts.length - 1];
+        var mods = parts.length > 1 ? parts.slice(0, -1).join('') : '';
+
+        if (parts.length > 2) {
+            mods = parts.slice(0, -1).join('');
+        }
+        return {
+            ctrl: mods.indexOf('C') !== -1,
+            alt: mods.indexOf('A') !== -1,
+            shift: mods.indexOf('S') !== -1,
+            key: /^[0-9]+$/.test(keyPart) ? null : String(keyPart).toLowerCase(),
+            code: /^[0-9]+$/.test(keyPart) ? Number(keyPart) : null,
+            raw: s
+        };
+    }
+
+    function DBF_shortcutKeysToLabel(spec) {
+        var p = DBF_parseShortcutKeys(spec);
+        if (!p) return '(aucun)';
+        var bits = [];
+        if (p.ctrl) bits.push('Ctrl');
+        if (p.alt) bits.push('Alt');
+        if (p.shift) bits.push('Shift');
+        if (p.key) bits.push(p.key.toUpperCase());
+        else if (p.code != null) bits.push('#' + p.code);
+        return bits.join('+') || '(aucun)';
+    }
+
+    function DBF_eventToShortcutKeys(e) {
+        if (!e) return null;
+        var k = e.key || '';
+        if (k === 'Control' || k === 'Shift' || k === 'Alt' || k === 'Meta' || k === 'Escape') return null;
+        var mods = '';
+        if (e.altKey) mods += 'A';
+        if (e.ctrlKey || e.metaKey) mods += 'C';
+        if (e.shiftKey) mods += 'S';
+        var keyPart;
+        if (k && k.length === 1 && /[a-zA-Z0-9]/.test(k)) {
+            keyPart = /[a-zA-Z]/.test(k) ? k.toLowerCase() : k;
+        } else {
+            var code = e.keyCode || e.which || 0;
+            if (!code) return null;
+
+            if (code >= 65 && code <= 90) keyPart = String.fromCharCode(code + 32);
+            else if (code >= 97 && code <= 122) keyPart = String.fromCharCode(code);
+            else keyPart = String(code);
+        }
+        return DBF_normalizeShortcutKeys(mods ? (mods + '+' + keyPart) : keyPart);
+    }
+
+    function DBF_eventMatchesShortcut(event, spec) {
+        var p = DBF_parseShortcutKeys(spec);
+        if (!p || !event) return false;
+        var hasC = !!(event.ctrlKey || event.metaKey);
+        if (p.ctrl !== hasC) return false;
+        if (p.alt !== !!event.altKey) return false;
+        if (p.shift !== !!event.shiftKey) return false;
+        if (p.code != null) {
+            var kc = event.keyCode || event.which || 0;
+            if (kc === p.code) return true;
+
+            if (p.code >= 97 && p.code <= 122 && kc === (p.code - 32)) return true;
+            if (p.code >= 65 && p.code <= 90 && kc === (p.code + 32)) return true;
+            return false;
+        }
+        if (p.key) {
+            var ek = (event.key || '').toLowerCase();
+            if (ek === p.key) return true;
+            if (p.key.length === 1) {
+                var wantCode = 'Key' + p.key.toUpperCase();
+                if (event.code === wantCode) return true;
+                if (/[0-9]/.test(p.key) && event.code === ('Digit' + p.key)) return true;
+                var letterCode = p.key.charCodeAt(0);
+                var kc2 = event.keyCode || event.which || 0;
+                if (letterCode >= 97 && letterCode <= 122
+                    && (kc2 === letterCode || kc2 === (letterCode - 32))) return true;
+            }
+        }
         return false;
     }
 
-    function DBF_runAutofillOnce(fn) {
+    var _dbfShortcutFireUntil = Object.create(null);
+    function DBF_fireShortcut(id, fn) {
         var now = Date.now();
-        if (now < _dbfAutofillLockUntil) return false;
-        _dbfAutofillLockUntil = now + 450;
+        if ((_dbfShortcutFireUntil[id] || 0) > now) return false;
+        _dbfShortcutFireUntil[id] = now + 450;
         try { return !!fn(); } catch (e) {
-            if (debug) console.warn("[DBF] autofill error:", e);
+            if (debug) console.warn("[DBF] shortcut " + id + ":", e);
             return false;
         }
     }
 
+    function DBF_runAutofillOnce(fn) {
+        return DBF_fireShortcut("ban_autofill", fn);
+    }
+
+    function DBF_deleteOwnShortcuts() {
+        if (!wmeSDK || !wmeSDK.Shortcuts) return;
+        DBF_SHORTCUT_DEFS.forEach(function (d) {
+            try {
+                if (typeof wmeSDK.Shortcuts.isShortcutRegistered === 'function'
+                    && !wmeSDK.Shortcuts.isShortcutRegistered({ shortcutId: d.id })) {
+                    return;
+                }
+                if (typeof wmeSDK.Shortcuts.deleteShortcut === 'function') {
+
+                    var delRet = wmeSDK.Shortcuts.deleteShortcut({ shortcutId: d.id });
+                    if (delRet && typeof delRet.then === 'function') {
+                        delRet.then(function () {  }, function () {  });
+                    }
+                }
+            } catch (eDel) {  }
+        });
+        _dbfShortcutsRegistered = false;
+        DBF_shortcutHouseOk = false;
+        DBF_shortcutAddressOk = false;
+    }
+
     function DBF_registerShortcuts() {
         if (!wmeSDK || !wmeSDK.Shortcuts) return;
-        var shortcuts = [
-            {
-                callback: function () { DBF_toggleBanFromPanel(); },
-                description: "Activer/Désactiver le calque BAN",
-                shortcutId: "ban_switch",
-                shortcutKeys: "C+B",
-            },
-            {
-                callback: function () { DBF_runAutofillOnce(DBF_autofillHouseNumber); },
-                description: "Autofill BAN n° (dès L2) : Ctrl+M avec la souris sur le point du numéro souhaité",
-                shortcutId: "ban_autofill",
-                shortcutKeys: "C+M",
-            },
+        DBF_ensureShortcutDefaultsPersisted();
+        var map = DBF_readShortcutMap();
 
-            {
-                callback: function () { DBF_setZoomLevel(19); },
-                description: "Zoom niveau 19",
-                shortcutId: "ban_zoom_level",
-                shortcutKeys: "A+97",
-            }
-        ];
-        shortcuts.forEach(function (sc) {
+        DBF_deleteOwnShortcuts();
+
+        DBF_SHORTCUT_DEFS.forEach(function (d) {
+            var wantedKeys = DBF_normalizeShortcutKeys(map[d.id]);
+            var sc = {
+                callback: function () { d.run(); },
+                description: d.description,
+                shortcutId: d.id,
+                shortcutKeys: wantedKeys
+            };
+            var bound = false;
             try {
-                var wantedKeys = sc.shortcutKeys;
-                var keysTaken = wantedKeys && DBF_keysAlreadyTaken(wantedKeys);
 
-                if (keysTaken) sc.shortcutKeys = null;
                 var ret = wmeSDK.Shortcuts.createShortcut(sc);
-                var bound = !keysTaken && !!wantedKeys;
-                if (sc.shortcutId === "ban_autofill") DBF_shortcutHouseOk = bound;
-                if (sc.shortcutId === "ban_address_autofill") DBF_shortcutAddressOk = bound;
+                bound = !!wantedKeys;
                 if (ret && typeof ret.then === "function") {
-                    ret.then(function () { }, function () {
-                        if (sc.shortcutId === "ban_autofill") DBF_shortcutHouseOk = false;
-                        if (sc.shortcutId === "ban_address_autofill") DBF_shortcutAddressOk = false;
+                    ret.then(function () {
+                        if (d.id === "ban_autofill") DBF_shortcutHouseOk = bound;
+                        if (d.id === "ban_address_autofill") DBF_shortcutAddressOk = bound;
+                    }, function () {
+
+                        try {
+                            sc.shortcutKeys = null;
+                            wmeSDK.Shortcuts.createShortcut(sc);
+                        } catch (eRetry) {  }
+                        if (d.id === "ban_autofill") DBF_shortcutHouseOk = false;
+                        if (d.id === "ban_address_autofill") DBF_shortcutAddressOk = false;
                     });
                 }
             } catch (e) {
-                if (sc.shortcutId === "ban_autofill") DBF_shortcutHouseOk = false;
-                if (sc.shortcutId === "ban_address_autofill") DBF_shortcutAddressOk = false;
-                if (debug) console.warn("DBF - Raccourci '" + sc.shortcutId + "' ignoré :", e.message || e);
+                bound = false;
+                try {
+                    sc.shortcutKeys = null;
+                    wmeSDK.Shortcuts.createShortcut(sc);
+                } catch (e2) {
+                    if (debug) console.warn("DBF - Raccourci '" + d.id + "' ignoré :", e.message || e);
+                }
             }
+            if (d.id === "ban_autofill") DBF_shortcutHouseOk = bound;
+            if (d.id === "ban_address_autofill") DBF_shortcutAddressOk = bound;
         });
+        _dbfShortcutsRegistered = true;
+    }
+
+    function DBF_applyShortcutMap(map, opts) {
+        opts = opts || {};
+
+        var seen = Object.create(null);
+        for (var i = 0; i < DBF_SHORTCUT_DEFS.length; i++) {
+            var id = DBF_SHORTCUT_DEFS[i].id;
+            var k = DBF_normalizeShortcutKeys(map[id]);
+            map[id] = k;
+            if (!k) continue;
+            if (seen[k]) {
+                DBF_notify('Raccourci en double : ' + DBF_shortcutKeysToLabel(k));
+                return false;
+            }
+            seen[k] = id;
+        }
+        DBF_writeShortcutMap(map);
+        try { DBF_registerShortcuts(); } catch (eReg) {
+            if (debug) console.warn('[DBF] re-register shortcuts', eReg);
+        }
+        if (!opts.silent) DBF_notify('Raccourcis enregistrés.');
+        return true;
     }
 
     function DBF_start() {
@@ -1756,21 +3114,28 @@
 
         DBF_onSdkEvent("wme-map-move-end", debounced_show_border);
         DBF_onSdkEvent("wme-map-move-end", debounced_load_ban);
+        DBF_onSdkEvent("wme-map-move-end", debounced_commune_cert_hud);
 
         DBF_onSdkEvent("wme-map-zoom-changed", debounced_show_border);
         DBF_onSdkEvent("wme-map-zoom-changed", debounced_load_ban);
+        DBF_onSdkEvent("wme-map-zoom-changed", debounced_commune_cert_hud);
 
         DBF_onSdkEvent("wme-map-data-loaded", debounced_show_border);
         DBF_onSdkEvent("wme-map-data-loaded", debounced_load_ban);
+        DBF_onSdkEvent("wme-map-data-loaded", debounced_commune_cert_hud);
 
         DBF_onSdkEvent("wme-selection-changed", debounced_load_ban);
         DBF_onSdkEvent("wme-after-edit", DBF_onBanModelChange);
-        DBF_onSdkEvent("wme-after-undo", DBF_onBanModelChange);
+        DBF_onSdkEvent("wme-after-undo", function () {
+
+            DBF_pruneLocalHnCache().then(function () { DBF_onBanModelChange(); });
+        });
         DBF_onSdkEvent("wme-no-edits", function () {
 
             _dbfLocalHn = Object.create(null);
             _dbfLocalHnById = Object.create(null);
             _dbfLocalBanKeys = Object.create(null);
+            _dbfLocalBanKeysByHn = Object.create(null);
             DBF_onBanModelChange();
         });
 
@@ -1783,7 +3148,8 @@
                     var hn = null;
                     if (payload && payload.houseNumber && payload.houseNumber.number != null) {
                         hn = payload.houseNumber;
-                    } else if (payload && payload.number != null && (payload.segmentId != null || payload.geometry)) {
+                    } else if (payload && payload.number != null && payload.segmentId != null) {
+
                         hn = payload;
                     } else if (id && wmeSDK && wmeSDK.DataModel && wmeSDK.DataModel.HouseNumbers
                         && typeof wmeSDK.DataModel.HouseNumbers.getById === 'function') {
@@ -1795,18 +3161,6 @@
                         : (hn.attributes && hn.attributes.number));
                     var segId = hn && (hn.segmentId != null ? hn.segmentId
                         : (hn.attributes && (hn.attributes.segID != null ? hn.attributes.segID : hn.attributes.segmentId)));
-                    if (segId == null && hn && hn.geometry && wmeSDK.DataModel.Segments) {
-                        try {
-                            var segs = await DBF_await(wmeSDK.DataModel.Segments.getAll()) || [];
-                            var coords = hn.geometry.coordinates || (hn.geometry.type === 'Point' && hn.geometry.coordinates);
-                            var lon = coords && Number(coords[0]);
-                            var lat = coords && Number(coords[1]);
-                            if (Number.isFinite(lon) && Number.isFinite(lat)) {
-                                var near = DBF_nearestDrivableSegment(lon, lat, segs);
-                                if (near && near.id != null) segId = near.id;
-                            }
-                        } catch (eNear) {  }
-                    }
                     if (kind === 'deleted') {
                         if (id) DBF_forgetLocalHnById(id);
                         else DBF_forgetLocalHn(number, segId);
@@ -1838,7 +3192,7 @@
         }
         insertScriptHTML();
 
-        console.log('[DBF] Initialisation terminée');
+        console.warn('[DBF] Initialisation terminée — ' + VERSION + ' / WFS ' + DBF_WFS_BAN_LAYER);
     }
     const DBF_DEFAULT_STYLES = {
         city: {
@@ -2114,6 +3468,30 @@
         padding: 14px 16px;
         animation: dbf-fadeIn .25s ease;
     }
+    /* Carte repliable (Paramètres → Sources officielles) */
+    details.dbf-card {
+        padding: 0;
+    }
+    details.dbf-card > summary.dbf-card__head {
+        list-style: none;
+        cursor: pointer;
+        user-select: none;
+    }
+    details.dbf-card > summary.dbf-card__head::-webkit-details-marker { display: none; }
+    details.dbf-card > summary.dbf-card__head::after {
+        content: '▾';
+        font-size: 12px;
+        color: var(--dbf-text-muted, #9ca3af);
+        margin-left: auto;
+        transition: transform .15s ease;
+    }
+    details.dbf-card:not([open]) > summary.dbf-card__head {
+        border-bottom: none;
+        border-radius: var(--dbf-radius);
+    }
+    details.dbf-card:not([open]) > summary.dbf-card__head::after {
+        transform: rotate(-90deg);
+    }
     .dbf-sub {
         font-size: 11px;
         color: var(--dbf-text-secondary);
@@ -2254,6 +3632,115 @@
         color: #fff;
     }
 
+    /* --- Panneau Statistiques --- */
+    #dbf-stats-panel .dbf-stats-mode {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    #dbf-stats-panel .dbf-stats-mode button {
+        flex: 1 1 calc(33% - 6px);
+        min-width: 96px;
+        padding: 6px 8px;
+        border: 1px solid #90a4ae;
+        border-radius: 50px;
+        cursor: pointer;
+        font: 600 11px Rubik, Open Sans, sans-serif;
+        background: #fff;
+        color: #455a64;
+    }
+    #dbf-stats-panel .dbf-stats-mode button.is-on {
+        background: #1565c0;
+        border-color: #1565c0;
+        color: #fff;
+    }
+    #dbf-stats-panel .dbf-stats-summary {
+        font-size: 12px;
+        line-height: 1.45;
+        color: #374151;
+        margin-bottom: 8px;
+    }
+    #dbf-stats-panel .dbf-stats-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+    #dbf-stats-panel .dbf-stats-actions button {
+        padding: 5px 12px;
+        border: 0;
+        border-radius: 50px;
+        cursor: pointer;
+        font: 600 11px Rubik, Open Sans, sans-serif;
+        background: #1565c0;
+        color: #fff;
+    }
+    #dbf-stats-panel .dbf-stats-actions button:disabled {
+        opacity: 0.55;
+        cursor: default;
+    }
+    #dbf-stats-panel .dbf-stats-filter {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 6px;
+        padding: 6px 8px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 11px;
+    }
+    #dbf-stats-panel .dbf-stats-rank-head {
+        font-size: 10px;
+        font-weight: 600;
+        color: #555;
+        margin: 4px 0 4px;
+    }
+    #dbf-stats-panel .dbf-stats-rank-box {
+        max-height: min(55vh, 420px);
+        overflow: auto;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        background: #fafafa;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        padding: 4px 8px;
+        border-bottom: 1px solid #eee;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row:hover {
+        background: #eef2ff;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row.is-clickable {
+        cursor: pointer;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row .dbf-stats-name {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row .dbf-stats-cnt {
+        white-space: nowrap;
+        color: #666;
+    }
+    #dbf-stats-panel .dbf-stats-rank-row .dbf-stats-pct {
+        width: 40px;
+        text-align: right;
+        font-weight: 700;
+    }
+    #dbf-stats-panel .dbf-stats-meta {
+        display: block;
+        font-size: 10px;
+        color: #6b7280;
+        margin-top: 6px;
+        line-height: 1.4;
+    }
+
     /* --- Updates bar --- */
     #dbf-updates-bar {
         display: flex;
@@ -2379,8 +3866,9 @@
     #sidepanel-DrawBordersFR {
         overflow: visible !important;
     }
-    .dbf-tab-content .dbf-tab-pane { display: none; }
-    .dbf-tab-content .dbf-tab-pane.active { display: block; }
+    .dbf-tab-content > .dbf-tab-pane,
+    .dbf-tab-content > .dbf-tab-pane[hidden] { display: none !important; }
+    .dbf-tab-content > .dbf-tab-pane.active:not([hidden]) { display: block !important; }
     #sidepanel-DrawBordersFR .tab-content {
         overflow: visible !important;
         height: auto !important;
@@ -2564,6 +4052,69 @@
         align-items: center;
         gap: 4px;
     }
+    .dbf-form-row input.dbf-sc-display {
+        width: 110px; height: 28px;
+        padding: 2px 6px;
+        border: 1px solid var(--dbf-border);
+        border-radius: var(--dbf-radius-sm);
+        font-size: 12px;
+        text-align: center;
+        background: var(--dbf-bg-subtle);
+        font-family: var(--dbf-font);
+        color: var(--dbf-text);
+    }
+    .dbf-form-row input.dbf-sc-display.dbf-sc-listening {
+        border-color: var(--dbf-accent, #1565c0);
+        background: #e3f2fd;
+        box-shadow: 0 0 0 3px rgba(21,101,192,.15);
+    }
+    .dbf-form-row .dbf-sc-btn {
+        height: 28px;
+        padding: 0 8px;
+        border: 1px solid var(--dbf-border);
+        border-radius: var(--dbf-radius-sm);
+        background: var(--dbf-card-bg, #f9fafb);
+        font-size: 11px;
+        cursor: pointer;
+        font-family: var(--dbf-font);
+    }
+    .dbf-form-row .dbf-sc-btn:hover { border-color: var(--dbf-accent, #1565c0); }
+
+    /* Raccourcis : empiler label + contrôles (évite le débordement sidebar) */
+    #dbfShortcutRows {
+        min-width: 0;
+        max-width: 100%;
+    }
+    #dbfShortcutRows .dbf-form-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        align-items: stretch;
+        min-width: 0;
+    }
+    #dbfShortcutRows .dbf-form-row label {
+        white-space: normal;
+        line-height: 1.3;
+    }
+    #dbfShortcutRows .dbf-input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+    #dbfShortcutRows input.dbf-sc-display {
+        flex: 1 1 72px;
+        width: auto;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    #dbfShortcutRows .dbf-sc-btn {
+        flex: 0 0 auto;
+        padding: 0 6px;
+        white-space: nowrap;
+    }
 
     /* --- Action bar (Appliquer / Reset) --- */
     #dbf-custom-actions {
@@ -2604,15 +4155,15 @@
         <h2 class="dbf-h2"><img src="${icon_DrB}" alt="" width="18" height="18"> WME Draw Borders France <span class="dbf-ver">v${GM_info.script.version}</span></h2>
         <p class="dbf-hint">Affiche les adresses BAN et les limites ADMIN EXPRESS pour aider l’édition France. Aucun objet n’est créé sur la carte.</p>
 
-        <div class="dbf-card">
-        <div class="dbf-card__head">
+        <details class="dbf-card" id="dbfOfficialSources">
+        <summary class="dbf-card__head">
             <div class="dbf-card__title">📡 Sources officielles</div>
-        </div>
+        </summary>
         <div class="dbf-card__body">
             <div id="dbf-official-cite" class="dbf-sub" style="margin-bottom:8px;line-height:1.45">Source : Base Adresse Nationale (BAN) + ADMIN EXPRESS COG-CARTO — Géoplateforme (IGN) — Licence Ouverte Etalab 2.0.</div>
             <div id="dbf-warning">⚠️ Affichage accrédité lu à la source officielle (doctrine France 1.6 — <a href="https://support.google.com/waze/answer/12075833" target="_blank" rel="noopener">Map Data Attribution</a>). Les données peuvent évoluer ou être mal positionnées&nbsp;: vérifiez toujours sur le terrain.</div>
         </div>
-        </div>
+        </details>
 
         <div class="dbf-card">
         <div class="dbf-card__head">
@@ -2632,12 +4183,19 @@
                     <span title="Adresses déjà renseignées sur WME">🔵 Sur WME : <b id="banStatOnWME">0</b> (<span id="banStatOnWMEPct">0</span>%)</span>
                     <span title="Adresses manquantes sur WME">🔴 Manquantes : <b id="banStatMissing">0</b></span>
                 </div>
-                <div style="font-size:10px; color:#888; margin-bottom:3px;">Progression édition WME :</div>
+                <div style="font-size:10px; color:#888; margin-bottom:3px;">Progression (viewport BAN) :</div>
                 <div style="background:#eee; border-radius:6px; height:10px; overflow:hidden; position:relative;" title="Pourcentage d'adresses BAN déjà sur WME">
                     <div id="banStatBar" style="height:100%; border-radius:6px; transition: width 0.4s ease, background 0.4s ease; width:0%;"></div>
                 </div>
                 <div style="text-align:right; font-size:10px; color:#666; margin-top:2px;"><span id="banStatBarPct">0</span>% complété</div>
             </div>
+            <div class="dbf-legend" style="margin-top:10px">
+            <div><span class="dbf-dot dbf-dot--red"></span>Non certifié</div>
+            <div><span class="dbf-dot dbf-dot--green"></span>Certifié</div>
+            <div><span class="dbf-dot dbf-dot--blue"></span><span class="dbf-tag2">Présent sur WME</span></div>
+            <div><span class="dbf-dot dbf-dot--red"></span><span class="dbf-tag">Absent de WME</span></div>
+            </div>
+            <p class="dbf-sub" style="margin:8px 0 0;">Progression commune / département → onglet <b>Statistiques</b>.</p>
         </div>
         </div>
 
@@ -2675,12 +4233,7 @@
         </div>
         <div class="dbf-card__body">
             <div id="zoomMiscValue" class="dbf-pill">Zoom: —</div>
-            <div class="dbf-legend" style="margin-top:12px">
-            <div><span class="dbf-dot dbf-dot--red"></span>Non certifié</div>
-            <div><span class="dbf-dot dbf-dot--green"></span>Certifié</div>
-            <div><span class="dbf-dot dbf-dot--blue"></span><span class="dbf-tag2">Présent sur WME</span></div>
-            <div><span class="dbf-dot dbf-dot--red"></span><span class="dbf-tag">Absent de WME</span></div>
-            </div>
+            <p class="dbf-sub" style="margin:8px 0 0;">Calques limites communes / départements via le menu calques WME.</p>
         </div>
         </div>
 
@@ -2728,6 +4281,40 @@
         <p class="dbf-foot">🔒 Le script ne crée aucun objet sur la carte.</p>
     <div id="loadBanData" style="display:none"></div>
     <div id="loadMiscData" style="display:none"></div>
+    </div>`;
+
+        var dbfStatsFranceModeBtn = '';
+        var StatsContent =
+            `<div id="dbf-stats-panel">
+        <h2 class="dbf-h2">📊 Statistiques WME / BAN</h2>
+        <p class="dbf-hint">Progression d’édition sans déplacer la carte. Les classements listent <b>toutes</b> les rues ou villes (filtre possible).</p>
+        <p class="dbf-sub" style="margin:0 0 10px;font-size:10px;line-height:1.4;">Carreaux WME / progression : inspiré de <a href="https://greasyfork.org/scripts/600088-wme-ban-coverage" target="_blank" rel="noopener">WME BAN Coverage</a> © DrSlump34 (MIT).</p>
+
+        <div class="dbf-card">
+            <div class="dbf-card__head">
+                <div class="dbf-card__title">Périmètre</div>
+            </div>
+            <div class="dbf-card__body">
+                <div class="dbf-stats-mode">
+                    <button type="button" id="dbfProgressModeCommune" class="is-on">Commune · rues</button>
+                    <button type="button" id="dbfProgressModeDept">Département · villes</button>
+                    ${dbfStatsFranceModeBtn}
+                </div>
+                <div id="dbfCommuneCertHud" class="dbf-stats-summary" style="display:none;">
+                    <div>🏘️ <b id="dbfCommuneCertName">—</b>
+                    · <b id="dbfCommunePresent">—</b> présents / <b id="dbfCommuneTotal">—</b>
+                    <span id="dbfProgressScopeLabel">dans la commune</span>
+                    (<b id="dbfCommuneCertPct">—</b>%)</div>
+                    <div class="dbf-stats-actions">
+                        <button type="button" id="dbfCommuneScanBtn">Actualiser la progression</button>
+                    </div>
+                    <input type="search" id="dbfStatsFilter" class="dbf-stats-filter" placeholder="Filtrer le classement…" autocomplete="off">
+                    <div id="dbfStatsRankHead" class="dbf-stats-rank-head" style="display:none;"></div>
+                    <div id="dbfCommuneStreetRank" style="display:none;"></div>
+                    <span id="dbfCommuneHudHint" class="dbf-stats-meta">Placez le centre de la carte, puis actualisez.</span>
+                </div>
+            </div>
+        </div>
     </div>`;
 
         var RScontent =
@@ -2909,6 +4496,18 @@
         </div>
     </details>
 
+    <details open>
+        <summary>⌨️ Raccourcis clavier</summary>
+        <div class="dbf-detail-body">
+        <p style="margin:0 0 8px; font-size:11px; color:#4b5563;">Cliquez « Capturer », puis tapez la combinaison. Échap annule. Les changements sont enregistrés tout de suite (pas besoin d’Appliquer).</p>
+        <div id="dbfShortcutRows"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+            <button type="button" id="dbfShortcutsReset" style="padding:4px 10px;cursor:pointer;border-radius:6px;border:1px solid var(--dbf-border,#d1d5db);background:var(--dbf-card-bg,#f9fafb);font-size:12px;">Réinitialiser les raccourcis</button>
+        </div>
+        <div id="dbfShortcutStatus" style="font-size:10px;color:#6b7280;margin-top:6px;"></div>
+        </div>
+    </details>
+
     <div id="dbf-custom-actions">
         <wz-button id="dbfCustomApply" color="secondary">✅ Appliquer</wz-button>
         <wz-button id="dbfCustomReset" color="secondary">🔄 Réinitialiser</wz-button>
@@ -2933,13 +4532,15 @@
         DBFaddon.innerHTML =
             "<ul class='dbf-nav' id='dbf-subtabs' style='margin:0 0 10px 0;'>"
             + "<li class='dbf-nav-item active'><a data-pane='dbf-pane-settings'>Paramètres</a></li>"
+            + "<li class='dbf-nav-item'><a data-pane='dbf-pane-stats'>Statistiques</a></li>"
             + "<li class='dbf-nav-item'><a data-pane='dbf-pane-signs'>Panneaux</a></li>"
             + "<li class='dbf-nav-item'><a data-pane='dbf-pane-custom'>Personnalisation</a></li>"
             + "</ul>"
-            + "<div class='dbf-tab-content'>"
+            + "<div class='dbf-tab-content' id='dbf-tab-content'>"
             + "<div class='dbf-tab-pane active' id='dbf-pane-settings'>" + DBFcontent + "</div>"
-            + "<div class='dbf-tab-pane' id='dbf-pane-signs' style='display:none'>" + RScontent + "</div>"
-            + "<div class='dbf-tab-pane' id='dbf-pane-custom'>" + CustomContent + "</div>"
+            + "<div class='dbf-tab-pane' id='dbf-pane-stats' hidden>" + StatsContent + "</div>"
+            + "<div class='dbf-tab-pane' id='dbf-pane-signs' hidden>" + RScontent + "</div>"
+            + "<div class='dbf-tab-pane' id='dbf-pane-custom' hidden>" + CustomContent + "</div>"
             + "</div>";
 
         if (DBF_sdkTabPane) {
@@ -2954,50 +4555,54 @@
 
         (function () {
             var tabs = DBFaddon.querySelector('#dbf-subtabs');
+            var PANE_IDS = ['dbf-pane-settings', 'dbf-pane-stats', 'dbf-pane-signs', 'dbf-pane-custom'];
             if (!tabs) return;
-            tabs.addEventListener('click', function (ev) {
-                var a = ev.target.closest('a[data-pane]');
-                if (!a) return;
 
-                ev.preventDefault();
-                ev.stopPropagation();
-
-                var paneId = a.getAttribute('data-pane');
-
-                if (paneId !== 'dbf-pane-signs') {
-                    var cont = DBFaddon.querySelector('#rsLegendContainer');
-                    var status = DBFaddon.querySelector('#rsLegendStatus');
-                    if (cont) cont.innerHTML = '';
-                    if (status) status.textContent = '';
-                }
-
-                var customActions = DBFaddon.querySelector('#dbf-custom-actions');
-                if (paneId !== 'dbf-pane-custom') {
-                    if (customActions) customActions.style.display = 'none';
-                }
-
+            function DBF_showPane(paneId) {
                 Array.from(tabs.querySelectorAll('.dbf-nav-item')).forEach(function (li) {
                     li.classList.remove('active');
                 });
+                var activeTab = tabs.querySelector('a[data-pane="' + paneId + '"]');
+                if (activeTab && activeTab.parentElement) activeTab.parentElement.classList.add('active');
 
-                DBFaddon.querySelectorAll('.dbf-tab-content .dbf-tab-pane').forEach(function (p) {
-                    p.classList.remove('active');
-                    p.style.display = 'none';
+                PANE_IDS.forEach(function (id) {
+                    var p = document.getElementById(id);
+                    if (!p) return;
+                    var on = (id === paneId);
+                    p.classList.toggle('active', on);
+                    if (on) {
+                        p.removeAttribute('hidden');
+                        p.style.setProperty('display', 'block', 'important');
+                    } else {
+                        p.setAttribute('hidden', '');
+                        p.style.setProperty('display', 'none', 'important');
+                    }
                 });
 
-                a.parentElement.classList.add('active');
-                var pane = DBFaddon.querySelector('#' + paneId);
-                if (pane) {
-                    pane.classList.add('active');
-                    pane.style.display = 'block';
+                var customActions = document.getElementById('dbf-custom-actions');
+                if (customActions) {
+                    customActions.style.display = (paneId === 'dbf-pane-custom') ? 'flex' : 'none';
                 }
-
-                if (paneId === 'dbf-pane-custom' && customActions) {
-                    customActions.style.display = 'flex';
+                if (paneId !== 'dbf-pane-signs') {
+                    var cont = document.getElementById('rsLegendContainer');
+                    var status = document.getElementById('rsLegendStatus');
+                    if (cont) cont.innerHTML = '';
+                    if (status) status.textContent = '';
                 }
-
                 if (paneId === 'dbf-pane-signs') RS_renderLegend();
+                if (paneId === 'dbf-pane-stats') {
+                    try { DBF_refreshCommuneCertHud(); } catch (eStats) {  }
+                }
+            }
 
+            DBF_showPane('dbf-pane-settings');
+
+            tabs.addEventListener('click', function (ev) {
+                var a = ev.target.closest('a[data-pane]');
+                if (!a) return;
+                ev.preventDefault();
+                ev.stopPropagation();
+                DBF_showPane(a.getAttribute('data-pane'));
             }, false);
         })();
 
@@ -3136,6 +4741,20 @@
         DBF_initBanSearch();
 
         var settings = JSON.parse(localStorage.DBFsettings);
+
+        (function () {
+            var box = getId('dbfOfficialSources');
+            if (!box) return;
+            var open = settings.officialSourcesOpen !== false;
+            box.open = open;
+            box.addEventListener('toggle', function () {
+                try {
+                    var a = JSON.parse(localStorage.DBFsettings || '{}');
+                    a.officialSourcesOpen = !!box.open;
+                    localStorage.setItem('DBFsettings', JSON.stringify(a));
+                } catch (e) {  }
+            });
+        })();
         var _el;
         _el = getId('optionDBF0'); if (_el) _el.checked = (settings.optionDBF0 === true);
         _el = getId('optionDBF1'); if (_el) _el.checked = (settings.optionDBF1 === true);
@@ -3219,6 +4838,8 @@
         DBF_refreshHnPill();
         try { DBF_renderOfficialSourcesCite(); } catch (e) { if (debug) console.warn('[DBF] sources cite:', e); }
         DBF_initCustomPanel();
+        try { DBF_wireCommuneProgressHud(); } catch (eHud) {  }
+        try { debounced_commune_cert_hud(); } catch (eHud2) {  }
         try { DBF_installCrnHighlightTool(); } catch (eCrn) {  }
 
     }
@@ -3320,6 +4941,131 @@
             btnAddRow.addEventListener('click', function () { addDictRow(); });
         }
 
+        (function initShortcutEditor() {
+            var host = document.getElementById('dbfShortcutRows');
+            var statusEl = document.getElementById('dbfShortcutStatus');
+            var btnResetSc = document.getElementById('dbfShortcutsReset');
+            if (!host) return;
+
+            var captureCleanup = null;
+
+            function setStatus(msg) {
+                if (statusEl) statusEl.textContent = msg || '';
+            }
+
+            function stopCapture() {
+                if (typeof captureCleanup === 'function') {
+                    try { captureCleanup(); } catch (e) {  }
+                }
+                captureCleanup = null;
+                _dbfShortcutCapturing = false;
+                host.querySelectorAll('input.dbf-sc-display').forEach(function (inp) {
+                    inp.classList.remove('dbf-sc-listening');
+                    inp.placeholder = '';
+                });
+            }
+
+            function refreshRows() {
+                var map = DBF_readShortcutMap();
+                host.innerHTML = '';
+                DBF_SHORTCUT_DEFS.forEach(function (def) {
+                    var row = document.createElement('div');
+                    row.className = 'dbf-form-row';
+                    row.title = def.hint || '';
+
+                    var lab = document.createElement('label');
+                    lab.textContent = def.label;
+
+                    var group = document.createElement('div');
+                    group.className = 'dbf-input-group';
+
+                    var display = document.createElement('input');
+                    display.type = 'text';
+                    display.readOnly = true;
+                    display.className = 'dbf-sc-display';
+                    display.dataset.scId = def.id;
+                    display.value = DBF_shortcutKeysToLabel(map[def.id]);
+                    display.title = map[def.id] ? ('SDK : ' + map[def.id]) : 'Aucun raccourci';
+
+                    var btnCap = document.createElement('button');
+                    btnCap.type = 'button';
+                    btnCap.className = 'dbf-sc-btn';
+                    btnCap.textContent = 'Capturer';
+                    btnCap.addEventListener('click', function () {
+                        stopCapture();
+                        _dbfShortcutCapturing = true;
+                        display.classList.add('dbf-sc-listening');
+                        display.value = '…';
+                        display.placeholder = 'Touches…';
+                        setStatus('Appuyez sur la combinaison pour « ' + def.label + ' » (Échap = annuler).');
+
+                        function onKey(ev) {
+                            ev.preventDefault();
+                            ev.stopPropagation();
+                            if (ev.key === 'Escape') {
+                                stopCapture();
+                                refreshRows();
+                                setStatus('Capture annulée.');
+                                return;
+                            }
+                            var combo = DBF_eventToShortcutKeys(ev);
+                            if (!combo) return;
+                            stopCapture();
+                            var next = DBF_readShortcutMap();
+                            next[def.id] = combo;
+                            if (DBF_applyShortcutMap(next)) {
+                                setStatus(def.label + ' → ' + DBF_shortcutKeysToLabel(combo));
+                            }
+                            refreshRows();
+                        }
+                        document.addEventListener('keydown', onKey, true);
+                        captureCleanup = function () {
+                            document.removeEventListener('keydown', onKey, true);
+                            _dbfShortcutCapturing = false;
+                        };
+                    });
+
+                    var btnClear = document.createElement('button');
+                    btnClear.type = 'button';
+                    btnClear.className = 'dbf-sc-btn';
+                    btnClear.textContent = '×';
+                    btnClear.setAttribute('aria-label', 'Effacer');
+                    btnClear.title = 'Effacer / désassigner ce raccourci';
+                    btnClear.addEventListener('click', function () {
+                        stopCapture();
+                        var next = DBF_readShortcutMap();
+                        next[def.id] = null;
+                        if (DBF_applyShortcutMap(next, { silent: true })) {
+                            setStatus(def.label + ' : aucun raccourci');
+                            DBF_notify(def.label + ' : raccourci effacé');
+                        }
+                        refreshRows();
+                    });
+
+                    group.appendChild(display);
+                    group.appendChild(btnCap);
+                    group.appendChild(btnClear);
+                    row.appendChild(lab);
+                    row.appendChild(group);
+                    host.appendChild(row);
+                });
+            }
+
+            if (btnResetSc) {
+                btnResetSc.addEventListener('click', function () {
+                    stopCapture();
+                    if (!confirm('Remettre les raccourcis DBF par défaut (Ctrl+M, Ctrl+B, Alt+A) ?')) return;
+                    var next = Object.create(null);
+                    DBF_SHORTCUT_DEFS.forEach(function (d) { next[d.id] = d.defaultKeys; });
+                    DBF_applyShortcutMap(next);
+                    refreshRows();
+                    setStatus('Raccourcis réinitialisés.');
+                });
+            }
+
+            refreshRows();
+        })();
+
         var btnApply = document.getElementById("dbfCustomApply");
         if (btnApply) {
             btnApply.addEventListener("click", function () {
@@ -3376,7 +5122,8 @@
                         DBFsettings: JSON.parse(localStorage.getItem('DBFsettings') || '{}'),
                         DBFstyles: JSON.parse(localStorage.getItem('DBFstyles') || '{}'),
                         dbf_rs_filters: JSON.parse(localStorage.getItem('dbf_rs_filters') || '{}'),
-                        dbf_ban_dict: JSON.parse(localStorage.getItem('dbf_ban_dict') || '{}')
+                        dbf_ban_dict: JSON.parse(localStorage.getItem('dbf_ban_dict') || '{}'),
+                        DBFcommuneWmePct: JSON.parse(localStorage.getItem('DBFcommuneWmePct') || '{}')
                     };
                     var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
                     var url = URL.createObjectURL(blob);
@@ -3422,6 +5169,8 @@
                         if (data.DBFstyles) localStorage.setItem('DBFstyles', JSON.stringify(data.DBFstyles));
                         if (data.dbf_rs_filters) localStorage.setItem('dbf_rs_filters', JSON.stringify(data.dbf_rs_filters));
                         if (data.dbf_ban_dict) localStorage.setItem('dbf_ban_dict', JSON.stringify(data.dbf_ban_dict));
+                        if (data.DBFcommuneWmePct) localStorage.setItem('DBFcommuneWmePct', JSON.stringify(data.DBFcommuneWmePct));
+                        else if (data.DBFcommuneCertPct) localStorage.setItem('DBFcommuneWmePct', JSON.stringify(data.DBFcommuneCertPct));
 
                         if (status) { status.textContent = '✅ Import réussi ! Rechargement…'; status.style.color = '#00c853'; }
                         setTimeout(function () { location.reload(); }, 800);
@@ -3524,11 +5273,15 @@
                             console.log("[COMMUNES DEBUG] ZOOM détecté → on conserve les communes existantes");
                                 }
 
+                                var insees = [];
                                 for (var i = 0; i < data.length; i++) {
                             Cty_Borders_DrawBorder(data[i].name, data[i].coord, data[i].code_insee);
                                     c++;
+                            if (data[i].code_insee) insees.push(data[i].code_insee);
                             if (debug) temp_city = temp_city + data[i].name + ", ";
                                 }
+                                DBF_prefetchCommunePcts(insees).catch(function () {  });
+                                debounced_commune_cert_hud();
 
                                 if (debug) {
                             console.log("WME Draw Borders France: " + c + " communes (COG-CARTO) pour la BBOX", temp_city);
@@ -3694,13 +5447,25 @@
         return out;
     }
 
+    function DBF_normalizeHnNumToken(numero, rep) {
+        var n = String(numero == null ? '' : numero);
+        var r = String(rep == null ? '' : rep);
+        var s = (n + r).toLowerCase().replace(/\s+/g, ' ').trim();
+        s = s.replace(/^(\d+)\s*(bis|ter|quater|[a-z])\b/, '$1$2');
+
+        s = s.replace(/^(\d+)\s+(bis|ter|quater|[a-z])\b/, '$1$2');
+        return s;
+    }
+
     function DBF_buildBanKeyFromParts(numero, rep, nomVoie, nomCommune, opts) {
         opts = opts || {};
         var correction = opts.correction || DBF_getBanCorrections();
         var stripLieuxDits = !!opts.stripLieuxDits;
-        var numPart = (numero != null ? String(numero) : "") + (rep != null ? rep : "");
+        var numPart = DBF_normalizeHnNumToken(numero, rep);
         var nomRueBan = numPart + (nomVoie ? " " + nomVoie : "");
         var nomRueCorr = DBF_normalizeStreetPart(nomRueBan, correction);
+
+        nomRueCorr = nomRueCorr.replace(/^(\d+)\s+(bis|ter|quater|[a-z])\b/, '$1$2');
 
         var nomCommuneBAN = (opts.ancienneCommune && String(opts.ancienneCommune).trim())
             || nomCommune
@@ -3829,15 +5594,31 @@
         }
     }
 
-    function DBF_rememberLocalBanKeys(keys) {
+    function DBF_rememberLocalBanKeys(keys, number, segmentId) {
         if (!keys || !keys.length) return;
+        var hnKey = (number != null && segmentId != null) ? DBF_hnSegKey(segmentId, number) : null;
+        var bucket = hnKey ? (_dbfLocalBanKeysByHn[hnKey] || (_dbfLocalBanKeysByHn[hnKey] = [])) : null;
         for (var i = 0; i < keys.length; i++) {
-            if (keys[i]) _dbfLocalBanKeys[String(keys[i])] = true;
+            if (!keys[i]) continue;
+            var bk = String(keys[i]);
+            _dbfLocalBanKeys[bk] = true;
+            if (bucket && bucket.indexOf(bk) === -1) bucket.push(bk);
+        }
+    }
+
+    function DBF_forgetLocalBanKeysForHn(number, segmentId) {
+        if (number == null || segmentId == null) return;
+        var hnKey = DBF_hnSegKey(segmentId, number);
+        var bucket = _dbfLocalBanKeysByHn[hnKey];
+        if (bucket) {
+            for (var i = 0; i < bucket.length; i++) delete _dbfLocalBanKeys[bucket[i]];
+            delete _dbfLocalBanKeysByHn[hnKey];
         }
     }
 
     function DBF_forgetLocalHn(number, segmentId) {
         if (number == null || segmentId == null) return;
+        DBF_forgetLocalBanKeysForHn(number, segmentId);
         delete _dbfLocalHn[DBF_hnSegKey(segmentId, number)];
     }
 
@@ -3848,6 +5629,84 @@
         if (info) {
             DBF_forgetLocalHn(info.number, info.segmentId);
             delete _dbfLocalHnById[id];
+        }
+    }
+
+    async function DBF_pruneLocalHnCache() {
+        if (!wmeSDK || !wmeSDK.DataModel || !wmeSDK.DataModel.HouseNumbers
+            || typeof wmeSDK.DataModel.HouseNumbers.getById !== 'function') {
+
+            _dbfLocalHn = Object.create(null);
+            _dbfLocalHnById = Object.create(null);
+            _dbfLocalBanKeys = Object.create(null);
+            _dbfLocalBanKeysByHn = Object.create(null);
+            return;
+        }
+        var ids = Object.keys(_dbfLocalHnById);
+        for (var i = 0; i < ids.length; i++) {
+            var id = ids[i];
+            var still = null;
+            try {
+                still = await DBF_await(wmeSDK.DataModel.HouseNumbers.getById({ houseNumberId: String(id) }));
+            } catch (e) { still = null; }
+            if (!still) DBF_forgetLocalHnById(id);
+        }
+
+        var keep = Object.create(null);
+        var keepKeys = Object.create(null);
+        var keepByHn = Object.create(null);
+        for (var id2 in _dbfLocalHnById) {
+            var info = _dbfLocalHnById[id2];
+            if (info && info.segmentId != null && info.number != null) {
+                var hk = DBF_hnSegKey(info.segmentId, info.number);
+                keep[hk] = info;
+                var bucket = _dbfLocalBanKeysByHn[hk];
+                if (bucket && bucket.length) {
+                    keepByHn[hk] = bucket.slice();
+                    for (var b = 0; b < bucket.length; b++) keepKeys[bucket[b]] = true;
+                }
+            }
+        }
+        _dbfLocalHn = keep;
+        _dbfLocalBanKeys = keepKeys;
+        _dbfLocalBanKeysByHn = keepByHn;
+    }
+
+    async function DBF_syncLocalHnFromModel() {
+        if (!wmeSDK || !wmeSDK.DataModel || !wmeSDK.DataModel.HouseNumbers) return;
+        var api = wmeSDK.DataModel.HouseNumbers;
+        var list = null;
+        try {
+            if (typeof api.getAll === 'function') {
+                list = await DBF_await(api.getAll());
+            } else if (typeof api.getAllInViewport === 'function') {
+                list = await DBF_await(api.getAllInViewport());
+            } else if (typeof api.getAllInBoundingBox === 'function') {
+                var ext = DBF_getMapExtent && DBF_getMapExtent();
+                if (ext) {
+                    list = await DBF_await(api.getAllInBoundingBox({
+                        left: ext.left != null ? ext.left : ext[0],
+                        bottom: ext.bottom != null ? ext.bottom : ext[1],
+                        right: ext.right != null ? ext.right : ext[2],
+                        top: ext.top != null ? ext.top : ext[3]
+                    }));
+                }
+            }
+        } catch (eSync) {
+            if (debug) console.warn('[DBF] syncLocalHnFromModel:', eSync);
+            return;
+        }
+        if (!list || !list.length) return;
+        for (var i = 0; i < list.length; i++) {
+            var hn = list[i];
+            if (!hn) continue;
+            var number = hn.number != null ? hn.number
+                : (hn.attributes && hn.attributes.number);
+            var segId = hn.segmentId != null ? hn.segmentId
+                : (hn.attributes && (hn.attributes.segID != null ? hn.attributes.segID : hn.attributes.segmentId));
+            var id = hn.id != null ? hn.id
+                : (hn.houseNumberId || (hn.attributes && hn.attributes.id));
+            if (number != null && segId != null) DBF_rememberLocalHn(number, segId, id);
         }
     }
 
@@ -3882,6 +5741,8 @@
                 segById[id] = s;
                 segIds.push(id);
             });
+
+            try { await DBF_syncLocalHnFromModel(); } catch (eSync0) {  }
 
             var legacyHns = DBF_readLegacySegmentHouseNumbers();
 
@@ -4009,7 +5870,11 @@
             if (state === 'yes') _banStatOnWME++;
 
             if (getId('optionDBF0')?.checked == true && state == 'yes') { continue; }
-            if (getId('optionDBF1')?.checked == true && adresse.certification_commune !== '1' && adresse.certification_commune != 1) { continue; }
+
+            if (getId('optionDBF1')?.checked == true
+                && adresse.certification_commune != null
+                && adresse.certification_commune !== '1'
+                && adresse.certification_commune != 1) { continue; }
             if (getId('optionDBF2')?.checked == true && adresse.nom_ancienne_commune != null) { Ville = "\n" + adresse.nom_ancienne_commune + ' (' + nomCommuneBAN + ')'; }
             if (getId('optionDBF3')?.checked == true && adresse.date_ajout_modif != null) { Ville = Ville + '\n' + deltaDate(adresse.date_ajout_modif); }
             if (getId('optionDBF5')?.checked == true && ((selectedRoadEl && selectedRoadEl.innerHTML != "") || (selectRoadEl && selectRoadEl.value != ""))) {
@@ -4220,73 +6085,81 @@
                 } catch (e) { if (debug) console.warn('[DBF] fillStreetSelect:', e); }
             })();
 
-            var _c = DBF_getCenter() || { lon: 0, lat: 0 };
-            let pt = { lon: _c.lon, lat: _c.lat };
-            var clat = pt.lat;
-            var clon = pt.lon;
-            var extent = DBF_getMapExtent();
-            if (!extent) return;
-            var minLon = extent.left;
-            var minLat = extent.bottom;
-            var maxLon = extent.right;
-            var maxLat = extent.top;
-            var bbox = [minLon, minLat, maxLon, maxLat];
-            var zoomLevel = DBF_getZoom();
-            if (!clat || !clon || !zoomLevel) {
-                console.error("Latitude, longitude ou zoomLevel manquant");
-                return;
-            }
-
             var reqId = ++_banWfsAbort;
-            if (debug) console.log("[BAN DEBUG] WFS BAN.DATA.GOUV:ban bbox=", bbox, "zoom=", zoomLevel);
-            try {
-                DBF_fetchBanWfs(bbox).then(function (adresses) {
-                    if (reqId !== _banWfsAbort) return null;
-                    return DBF_enrichBanFromBal(adresses);
-                }).then(function (adresses) {
-                    if (!adresses || reqId !== _banWfsAbort) return;
+            DBF_refreshMapState().then(function () {
+                if (reqId !== _banWfsAbort) return;
+                var _c = DBF_getCenter() || { lon: 0, lat: 0 };
+                var clat = _c.lat;
+                var clon = _c.lon;
+                var extent = DBF_getMapExtent();
+                if (!extent) {
+                    console.warn('[DBF] BAN: pas d’emprise carte');
+                    return;
+                }
+                var bbox = [extent.left, extent.bottom, extent.right, extent.top];
+                var zoomLevel = DBF_getZoom();
+                if (!clat || !clon || !zoomLevel) {
+                    console.error('Latitude, longitude ou zoomLevel manquant');
+                    return;
+                }
+                if (!DBF_isValidWgs84Bbox(bbox)) {
+                    console.warn('[DBF] BAN WFS: bbox invalide', bbox);
+                    var _lbdBad = getId('loadBanData'); if (_lbdBad) _lbdBad.style.backgroundColor = '#fac3c3';
+                    return;
+                }
+                console.log('[DBF] BAN WFS', DBF_WFS_BAN_LAYER, 'bbox=', bbox, 'zoom=', zoomLevel);
+                return DBF_fetchBanWfs(bbox).then(function (adresses) {
+                    if (!adresses || reqId !== _banWfsAbort) return null;
 
-                    var a = adresses.info_ban || [];
-                            var b = adresses.lieux_dits || [];
-                            _banDrawCache = { addresses: a, lieux_dits: b };
-
-                    var _bq = getId('banQty');
-                    if (_bq) {
-                        _bq.textContent = String(a.length) + (adresses.truncated ? '+' : '');
-                        _bq.title = adresses.truncated
-                            ? ('Viewport tronqué : ' + a.length + ' / ~' + adresses.matched + ' (max ' + DBF_WFS_MAX + ')')
-                            : (a.length + ' adresses BAN (WFS officiel) + lieux-dits BAL');
-                    }
-                    adresses_list = a.map(function (x) {
-                        return {
+                    function DBF_applyBanBundle(bundle, fromBal) {
+                        if (!bundle || reqId !== _banWfsAbort) return;
+                        var a = bundle.info_ban || [];
+                        var b = bundle.lieux_dits || [];
+                        _banDrawCache = { addresses: a, lieux_dits: b };
+                        var _bq = getId('banQty');
+                        if (_bq) {
+                            _bq.textContent = String(a.length) + (bundle.truncated ? '+' : '');
+                            _bq.title = (fromBal ? 'BAN+BAL — ' : 'BAN (WFS) — ')
+                                + (bundle.truncated
+                                    ? ('Viewport tronqué : ' + a.length + ' / ~' + bundle.matched + ' (max ' + DBF_WFS_MAX + ')')
+                                    : (a.length + ' adresses'));
+                        }
+                        adresses_list = a.map(function (x) {
+                            return {
                                 id_raw: x.id,
-                            id_signalement: String(x.id || '').split('_').slice(0, 3).join('_'),
-                            numero: x.numero + (x.rep || ''),
+                                id_signalement: String(x.id || '').split('_').slice(0, 3).join('_'),
+                                numero: x.numero + (x.rep || ''),
                                 voie: x.nom_voie,
                                 commune: x.nom_commune,
                                 lon: x.lon,
                                 lat: x.lat
-                        };
-                    });
-                            setTimeout(DBF_initBanSearch, 0);
-                    var _bq2 = getId('banQty');
-                    if (_bq2) _bq2.style.color = adresses.truncated ? 'red' : 'black';
-
-                    var firstInsee = a[0] && a[0].code_insee;
-                    if (firstInsee) {
-                        DBF_banLookup(firstInsee).then(DBF_renderOfficialSourcesCite).catch(function () { });
+                            };
+                        });
+                        setTimeout(DBF_initBanSearch, 0);
+                        var _bq2 = getId('banQty');
+                        if (_bq2) _bq2.style.color = bundle.truncated ? 'red' : 'black';
+                        var firstInsee = a[0] && a[0].code_insee;
+                        if (firstInsee) {
+                            DBF_banLookup(firstInsee).then(DBF_renderOfficialSourcesCite).catch(function () { });
+                        }
+                        console.log('[DBF] BAN paint', a.length, 'adresses' + (fromBal ? ' (après BAL)' : ''));
+                        return DBF_paintBanLayer(a, b);
                     }
 
-                    return DBF_paintBanLayer(a, b);
-                }).then(function () {
+                    return DBF_applyBanBundle(adresses, false).then(function () {
+                        if (reqId !== _banWfsAbort) return null;
+                        var _lbdOk = getId('loadBanData'); if (_lbdOk) _lbdOk.style.backgroundColor = '#ffffff';
+                        return DBF_enrichBanFromBal(adresses).then(function (enriched) {
+                            if (!enriched || reqId !== _banWfsAbort) return null;
+                            return DBF_applyBanBundle(enriched, true);
+                        });
+                    });
+                }).catch(function (err) {
                     if (reqId !== _banWfsAbort) return;
-                                var _lbd2 = getId('loadBanData'); if (_lbd2) _lbd2.style.backgroundColor = '#ffffff';
-                            }).catch(function (err) {
-                    if (reqId !== _banWfsAbort) return;
-                    console.warn('[DBF] BAN WFS / paint:', err);
-                                var _lbd2e = getId('loadBanData'); if (_lbd2e) _lbd2e.style.backgroundColor = '#fac3c3';
+                    console.warn('[DBF] BAN WFS / paint:', err && err.message, err && err.url);
+                    var _lbd2e = getId('loadBanData'); if (_lbd2e) _lbd2e.style.backgroundColor = '#fac3c3';
                 });
-            } catch (ex) { console.error(`${SCRIPT_NAME}:`, ex); }
+            }).catch(function (ex) { console.error(SCRIPT_NAME + ':', ex); });
         }
     }
 
@@ -6265,18 +8138,20 @@
         return true;
     }
 
-    function DBF_isCtrlM(event, wantShift) {
-        if (!event || !event.ctrlKey || event.altKey || event.metaKey) return false;
-        if (!!event.shiftKey !== !!wantShift) return false;
-        var k = (event.key || "").toLowerCase();
-        return k === "m" || event.code === "KeyM";
-    }
-
     document.addEventListener("keydown", function (event) {
-        if (!DBF_isCtrlM(event, false)) return;
-        if (DBF_runAutofillOnce(DBF_autofillHouseNumber)) {
-            event.preventDefault();
-            event.stopPropagation();
+        if (!event || event.repeat || _dbfShortcutCapturing) return;
+        var map = DBF_readShortcutMap();
+        for (var i = 0; i < DBF_SHORTCUT_DEFS.length; i++) {
+            var def = DBF_SHORTCUT_DEFS[i];
+            var keys = map[def.id];
+            if (!keys || !DBF_eventMatchesShortcut(event, keys)) continue;
+            var ran = false;
+            try { ran = !!def.run(); } catch (eRun) { ran = false; }
+            if (ran) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            return;
         }
     }, true);
 
@@ -6685,13 +8560,17 @@
         return 0;
     };
 
-    const _vmLatest = function (empreintes) {
+    const _vmLatest = function (empreintes, minField) {
         var best = null;
-        if (!empreintes || typeof empreintes !== 'object') return null;
-        Object.keys(empreintes).forEach(function (k) {
-            if (!/^\d+(\.\d+)*$/.test(k)) return;
-            if (best === null || _vmCmp(k, best) > 0) best = k;
-        });
+        if (empreintes && typeof empreintes === 'object') {
+            Object.keys(empreintes).forEach(function (k) {
+                if (!/^\d+(\.\d+)*$/.test(k)) return;
+                if (best === null || _vmCmp(k, best) > 0) best = k;
+            });
+        }
+        if (typeof minField === 'string' && /^\d+(\.\d+)*$/.test(minField)) {
+            if (best === null || _vmCmp(minField, best) > 0) best = minField;
+        }
         return best;
     };
     const _vmHx = function (t) {
@@ -6772,14 +8651,20 @@
         try {
             var w = DBF_pageWindow;
             if (w.SDK_INITIALIZED && typeof w.SDK_INITIALIZED.then === 'function') {
-                try { await w.SDK_INITIALIZED; } catch (eInit) {  }
+
+                try {
+                    await Promise.race([
+                        w.SDK_INITIALIZED,
+                        new Promise(function (r) { setTimeout(r, 8000); })
+                    ]);
+                } catch (eInit) {  }
             }
             if (typeof w.getWmeSdk !== 'function') return false;
             var sdkVm = w.getWmeSdk({
                 scriptId: SCRIPT_ID + '-vm',
                 scriptName: String(SCRIPT_NAME) + ' (version)'
             });
-            for (var i = 0; i < 40; i++) {
+            for (var i = 0; i < 16; i++) {
                 var u = null;
                 try {
                     u = sdkVm && sdkVm.State && typeof sdkVm.State.getUserInfo === 'function'
@@ -6793,7 +8678,7 @@
                     }
                     return ok;
                 }
-                await new Promise(function (r) { setTimeout(r, 500); });
+                await new Promise(function (r) { setTimeout(r, 400); });
             }
         } catch (e) {  }
         return false;
@@ -6826,7 +8711,7 @@
         }
         if (!j.empreintes || typeof j.empreintes !== 'object') return null;
 
-        var latest = _vmLatest(j.empreintes);
+        var latest = _vmLatest(j.empreintes, j.min);
         if (num.test(v) && latest && _vmCmp(v, latest) < 0) {
             return { motif: 'retiree', min: latest };
         }
@@ -6834,7 +8719,7 @@
         if (!attendue) {
 
             if (await _vmAuteur()) {
-                console.info(
+                console.warn(
                     '[' + SCRIPT_NAME + '] version non publiée — démarrage mainteneur. '
                     + 'Coller dans version-min.json → empreintes["' + v + '"] = "' + (h || '') + '"'
                 );
@@ -6891,9 +8776,12 @@
 
     async function DBF_bootstrap() {
         try {
-            if (await _vmBloque()) return;
+            if (await _vmBloque()) {
+                console.warn('[DBF] démarrage bloqué par le contrôle d’intégrité (bandeau rouge)');
+                return;
+            }
             DBF_start();
-                        } catch (e) {
+        } catch (e) {
             console.error('[DBF] bootstrap / intégrité:', e);
             try { DBF_start(); } catch (e2) { console.error('[DBF] DBF_start:', e2); }
         }
